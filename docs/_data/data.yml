@@ -49,7 +49,7 @@ career-profile:
 education:
     - degree: Ph.D. in Electrical Engineering
       university: Texas Tech University, Lubbock, Texas
-      time: 2014 - 2018
+      time: Aug. 2014 - May 2018
       details: |
         #Describe your study here lorem ipsum dolor sit amet, consectetuer
         #adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
@@ -60,18 +60,15 @@ education:
         #  - Bullet point
         #  - Bullet point 
 
-    #- degree: BSc in Applied Mathematics
-    #  university: Bristol University
-    #  time: 2007 - 2011
-    #  details: |
-    #    Describe your study here lorem ipsum dolor sit amet, consectetuer
-    #    adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
-    #    sociis natoque penatibus et magnis dis parturient montes, nascetur
-    #    ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
-    #    pretium quis, sem.
+    - degree: M.Sc. in Information Science and Electronic Engineering
+      university: Zhejiang University, Hangzhou, China
+      time: Aug. 2011 - Mar. 2014
+      details: |
 
-    #      - Bullet point
-    #      - Bullet point 
+    - degree: B.Sc. in Information Science and Electronic Engineering
+      university: Zhejiang University, Hangzhou, China
+      time: Aug. 2007 - Jun. 2011
+      details: |
 
 experiences:
     #- role: Lead Developer
