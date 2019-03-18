@@ -104,6 +104,7 @@ skills:
     intro: |
       Electromagnetic/Antenna Design and Simulation
 
+    toolset:
       - name: CST Microwave Studio
     #    level: 100%
 
