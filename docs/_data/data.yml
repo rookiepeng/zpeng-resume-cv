@@ -90,26 +90,23 @@ experiences:
           - Completed simulation evaluation and initial schematic design
 
 skills:
-    #title: Skills &amp; Proficiency
+    title: Skills
+    intro: |
+      Programming Languages
 
     toolset:
+      - name: Matlab
+    #    level: 100%
+
       - name: Python
-    #    level: 98%
+    #    level: 100%
 
-    #  - name: Javascript & jQuery
-    #    level: 98%
+    intro: |
+      Electromagnetic/Antenna Design and Simulation
 
-    #  - name: Angular
-    #    level: 98%
+      - name: CST Microwave Studio
+    #    level: 100%
 
-    #  - name: HTML5 & CSS
-    #    level: 95%
-
-    #  - name: Ruby on Rails
-    #    level: 85%
-
-    #  - name: Sketch & Photoshop
-    #    level: 60%
 
 projects:
     title: Projects
