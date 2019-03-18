@@ -91,23 +91,37 @@ experiences:
 
 skills:
     title: Skills
-    intro: |
-      Programming Languages
 
     toolset:
+      - name: CST Microwave Studio
+    #    level: 100%
+
+      - name: Ansys HFSS
+    #    level: 100%
+
+      - name: Keysight ADS
+    #    level: 100%
+
+      - name: Cadence Virtuoso
+    #    level: 100%
+
+      - name: Cadence Allegro
+    #    level: 100%
+
       - name: Matlab
     #    level: 100%
 
       - name: Python
     #    level: 100%
 
-    intro: |
-      Electromagnetic/Antenna Design and Simulation
-
-    toolset:
-      - name: CST Microwave Studio
+      - name: Java
     #    level: 100%
 
+      - name: C/C++
+    #    level: 100%
+
+      - name: Verilog HDL
+    #    level: 100%
 
 projects:
     title: Projects
