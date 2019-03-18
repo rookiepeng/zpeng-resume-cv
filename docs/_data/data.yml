@@ -49,7 +49,7 @@ career-profile:
 education:
     - degree: Ph.D. in Electrical Engineering
       university: Texas Tech University
-      time: Aug. 2014 - May 2018
+      time: 2014 - 2018
       details: |
         #Describe your study here lorem ipsum dolor sit amet, consectetuer
         #adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
@@ -62,12 +62,12 @@ education:
 
     - degree: M.Sc. in Information Science and Electronic Engineering
       university: Zhejiang University
-      time: Aug. 2011 - Mar. 2014
+      time: 2011 - 2014
       details: |
 
     - degree: B.Sc. in Information Science and Electronic Engineering
       university: Zhejiang University
-      time: Aug. 2007 - Jun. 2011
+      time: 2007 - 2011
       details: |
 
 experiences:
