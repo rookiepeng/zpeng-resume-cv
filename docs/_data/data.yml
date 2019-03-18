@@ -77,6 +77,19 @@ experiences:
       details: |
           - Design and build next generation radar systems for active safety and autonomous vehicles
 
+    - role: Guest Editor
+      time: Mar. 2019 - Present
+      company: MDPI Remote Sensing Journal
+      details: |
+          - 'Guest editor for Remote Sensing journal special issue: Radar Remote Sensing on Life Activities'
+
+    - role: Research Internship
+      time: May 2017 - Aug. 2017
+      company: Mitsubishi Electric Research Labs. (MERL), Cambridge, MA
+      details: |
+          - Designed novel digital beamforming transmitter architectures for radars and communication systems aiming to reduce hardware complexity and power consumption
+          - Completed simulation evaluation and initial schematic design
+
 projects:
     title: Projects
     intro: >
