@@ -1,0 +1,175 @@
+#
+# Be aware that even a small syntax error here can lead to failures in output. 
+#
+
+sidebar:
+    about: False # set to False or comment line if you want to remove the "how to use?" in the sidebar
+    education: True # set to False if you want education in main section instead of in sidebar
+
+    # Profile information
+    name: Zhengyu Peng
+    tagline: Senior Radar Systems Engineer
+    avatar: profile.png  #place a 100x100 picture inside /assets/images/ folder and provide the name of the file below
+
+    # Sidebar links
+    email: zpeng.me@gmail.com
+    phone: 806-392-6110
+    website: zpeng.me #do not add http://
+    linkedin: zhengyup
+    github: rookiepeng
+    gitlab:
+    bitbucket:
+    twitter:
+    stack-overflow: # Number/Username, e.g. 123456/alandoe
+    codewars:
+
+    languages:
+      - idiom: English
+        level: Professional
+
+      - idiom: Mandarin
+        level: Native
+        
+    #interests:
+    #  - item: Climbing
+    #    link:
+
+    #  - item: Snowboarding
+    #    link:
+
+    #  - item: Cooking
+    #    link:
+
+career-profile:
+    title: Career Profile
+    summary: |
+      Senior radar systems engineer with the expertises in automotive radar systems, RF/microwave systems, RF IC design, and antenna array.
+
+education:
+    - degree: Ph.D. in Electrical Engineering
+      university: Texas Tech University
+      time: 2014 - 2018
+      details: |
+        #Describe your study here lorem ipsum dolor sit amet, consectetuer
+        #adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum
+        #sociis natoque penatibus et magnis dis parturient montes, nascetur
+        #ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
+        #pretium quis, sem.
+
+        #  - Bullet point
+        #  - Bullet point 
+
+    - degree: M.Sc. in Information Science and Electronic Engineering
+      university: Zhejiang University
+      time: 2011 - 2014
+      details: |
+
+    - degree: B.Sc. in Information Science and Electronic Engineering
+      university: Zhejiang University
+      time: 2007 - 2011
+      details: |
+
+experiences:
+    - role: Senior Radar Systems Engineer
+      time: Jun. 2018 - Present
+      company: Aptiv, Kokomo, IN
+      details: |
+          - Design and build next generation radar systems for active safety and autonomous vehicles
+
+    - role: Guest Editor
+      time: Mar. 2019 - Present
+      company: MDPI Remote Sensing Journal
+      details: |
+          - Guest editor for Remote Sensing journal special issue: Radar Remote Sensing on Life Activities
+
+    - role: Research Internship
+      time: May 2017 - Aug. 2017
+      company: Mitsubishi Electric Research Labs. (MERL), Cambridge, MA
+      details: |
+          - Designed novel digital beamforming transmitter architectures for radars and communication systems aiming to reduce hardware complexity and power consumption
+          - Completed simulation evaluation and initial schematic design
+
+skills:
+    title: Skills
+
+    toolset:
+      - name: CST Microwave Studio
+    #    level: 100%
+
+      - name: Ansys HFSS
+    #    level: 100%
+
+      - name: Keysight ADS
+    #    level: 100%
+
+      - name: Cadence Virtuoso
+    #    level: 100%
+
+      - name: Cadence Allegro
+    #    level: 100%
+
+      - name: Matlab
+    #    level: 100%
+
+      - name: Python
+    #    level: 100%
+
+      - name: Java
+    #    level: 100%
+
+      - name: C/C++
+    #    level: 100%
+
+      - name: Verilog HDL
+    #    level: 100%
+
+projects:
+    title: Projects
+    intro: >
+      #You can list your side projects or open source libraries in this
+      #section. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      #Vestibulum et ligula in nunc bibendum fringilla a eu lectus.
+
+    assignments:
+      #- title: Velocity
+      #  link: "#hook"
+      #  tagline: "A responsive website template designed to help startups promote, market and sell their products."
+
+      #- title: DevStudio
+      #  link: "#"
+      #  tagline: "A responsive website template designed to help web developers/designers market their services."
+
+      #- title: Tempo
+      #  link: "#"
+      #  tagline: "A responsive website template designed to help startups promote their products or services and to attract users &amp; investors"
+
+      #- title: Atom
+      #  link: "#"
+      #  tagline: "A comprehensive website template solution for startups/developers to market their mobile apps."
+
+      #- title: Delta
+      #  link: "#"
+      #  tagline: "A responsive Bootstrap one page theme designed to help app developers promote their mobile apps"
+
+publications:
+    title: Publications
+    intro: |
+      #You can list your publications in this section. Lorem ipsum dolor sit
+      #amet, consectetur adipiscing elit. Vestibulum et ligula in nunc
+      #bibendum fringilla a eu lectus.
+
+    papers:
+      #- title: The Art of Computer Programming
+      #  authors: Donald E. Knuth
+      #  conference: Addison-Wesley, 1968
+
+      #- title: "Genetic Programming III: Darwinian Invention &amp; Problem Solving"
+      #  authors: Koza, J.R., Andre, D., Bennett, F.H., Keane, M.A.
+      #  conference: "Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1st edn. (1999)"
+
+      #- title: A syntax directed compiler for Algol 60
+      #  authors: Edgar T. Irons
+      #  conference: "Comm. ACM 4 (1961), 51–55"
+
+#footer: >
+#    Designed with <i class="fas fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank" rel="nofollow">Xiaoying Riley</a>
