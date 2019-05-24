@@ -136,17 +136,25 @@ publications:
       Featured publications. <a href="https://zpeng.me/index.php/publications/" target="_blank" rel="nofollow">Check the full list</a>
 
     papers:
-      - title: "Short-Range Micro-Motion Sensing: Hardware, signal processing, and machine learning \"Chapter 1: FMCW Radar System for Short-Range Micro-Motion Sensing\""
-        authors: Z. Peng, C. Li, R. Gómez-García, and J.-M. Muñoz-Ferreras
+      - title: "Chapter 1: FMCW Radar System for Short-Range Micro-Motion Sensing in \"Short-Range Micro-Motion Sensing: Hardware, signal processing, and machine learning\""
+        authors: Z. Peng, C. Li, R. Gómez-García, J.-M. Muñoz-Ferreras
         conference: "Raleigh, NC: SCITECH PUB, 2019"
 
-      #- title: "Genetic Programming III: Darwinian Invention &amp; Problem Solving"
-      #  authors: Koza, J.R., Andre, D., Bennett, F.H., Keane, M.A.
-      #  conference: "Morgan Kaufmann Publishers Inc., San Francisco, CA, USA, 1st edn. (1999)"
+      - title: "Portable microwave radar systems for short-range localization and life tracking: a review"
+        authors: Z. Peng, C. Li
+        conference: Sensors, vol. 19, no. 5, p. 1136, Mar. 2019
 
-      #- title: A syntax directed compiler for Algol 60
-      #  authors: Edgar T. Irons
-      #  conference: "Comm. ACM 4 (1961), 51–55"
+      - title: A portable K-band 3-D MIMO radar with nonuniformly spaced array for short-range localization
+        authors: Z. Peng, C. Li
+        conference: IEEE Transactions on Microwave Theory and Techniques, vol. 66, no. 11, pp. 5075-5086, Nov. 2018
+
+      - title: A κ-band portable FMCW radar with beamforming array for short-range localization and vital-Doppler targets discrimination
+        authors: Z. Peng, L. Ran, C. Li
+        conference: IEEE Transactions on Microwave Theory and Techniques, vol. 65, no. 9, pp. 3443-3452, Sept. 2017
+
+      - title: A portable FMCW-interferometry radar with programmable low-IF architecture for localization, ISAR imaging and vital-sign tracking
+        authors: Z. Peng, J.-M. Muñoz-Ferreras, Y. Tang, R. Gómez-García, L. Ran, C. Li
+        conference: IEEE Transactions on Microwave Theory and Techniques, vol. 65, no. 4, pp. 1334-1344, Apr. 2017
 
 #footer: >
 #    Designed with <i class="fas fa-heart"></i> by <a href="http://themes.3rdwavemedia.com" target="_blank" rel="nofollow">Xiaoying Riley</a>
