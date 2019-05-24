@@ -136,9 +136,9 @@ publications:
       Featured publications. <a href="https://zpeng.me/index.php/publications/" target="_blank" rel="nofollow">Check the full list</a>
 
     papers:
-      #- title: The Art of Computer Programming
-      #  authors: Donald E. Knuth
-      #  conference: Addison-Wesley, 1968
+      - title: "Short-Range Micro-Motion Sensing: Hardware, signal processing, and machine learning \"Chapter 1: FMCW Radar System for Short-Range Micro-Motion Sensing\""
+        authors: Z. Peng, C. Li, R. Gómez-García, and J.-M. Muñoz-Ferreras
+        conference: "Raleigh, NC: SCITECH PUB, 2019"
 
       #- title: "Genetic Programming III: Darwinian Invention &amp; Problem Solving"
       #  authors: Koza, J.R., Andre, D., Bennett, F.H., Keane, M.A.
