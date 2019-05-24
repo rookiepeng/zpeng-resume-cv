@@ -1,29 +1,8 @@
 # My CV/Résumé
 
-[Curriculum Vitae.pdf](http://rookiepeng.github.io/zpeng-resume-cv/Curriculum%20Vitae.pdf)
+<a href="https://rookiepeng.github.io/zpeng-resume-cv/" target="_blank" rel="nofollow"><img src="https://img.shields.io/badge/View-on--line-green.svg" height="20" ></a> <a href="https://rookiepeng.github.io/zpeng-resume-cv/Curriculum%20Vitae.pdf" target="_blank" rel="nofollow"><img src="https://img.shields.io/badge/Download-PDF-blue.svg" height="20" ></a>
 
-----------
+## Credits
 
-My CV and résumé modified and tweaked based on [Awesome CV](https://github.com/posquit0/Awesome-CV).
-
-![Z. Peng's résumé 1](https://github.com/rookiepeng/zpeng-resume-cv/blob/master/docs/Résumé-p1.png)
-
-
-
-![Z. Peng's résumé 1](https://github.com/rookiepeng/zpeng-resume-cv/blob/master/docs/Résumé-p2.png)
-
-
-
-![Z. Peng's résumé 1](https://github.com/rookiepeng/zpeng-resume-cv/blob/master/docs/Résumé-p3.png)
-
-
-
-![Z. Peng's résumé 1](https://github.com/rookiepeng/zpeng-resume-cv/blob/master/docs/Résumé-p4.png)
-
-
-
-![Z. Peng's résumé 1](https://github.com/rookiepeng/zpeng-resume-cv/blob/master/docs/Résumé-p5.png)
-
-
-
-![Z. Peng's résumé 1](https://github.com/rookiepeng/zpeng-resume-cv/blob/master/docs/Résumé-p6.png)
+[Awesome CV](https://github.com/posquit0/Awesome-CV) - LaTeX template for your outstanding job application
+[online-cv](https://github.com/sharu725/online-cv) - A minimal Jekyll Theme to host your resume (CV)
