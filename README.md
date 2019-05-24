@@ -4,6 +4,5 @@
 
 ## Credits
 
-[Awesome CV](https://github.com/posquit0/Awesome-CV) - LaTeX template for your outstanding job application
-
-[online-cv](https://github.com/sharu725/online-cv) - A minimal Jekyll Theme to host your resume (CV)
+- [Awesome CV](https://github.com/posquit0/Awesome-CV) - LaTeX template for your outstanding job application
+- [online-cv](https://github.com/sharu725/online-cv) - A minimal Jekyll Theme to host your resume (CV)
