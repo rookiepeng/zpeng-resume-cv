@@ -125,31 +125,31 @@ skills:
 
 projects:
     title: Projects
-    intro: >
-      You can list your side projects or open source libraries in this
-      section. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Vestibulum et ligula in nunc bibendum fringilla a eu lectus.
+    # intro: >
+    #   You can list your side projects or open source libraries in this
+    #   section. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    #   Vestibulum et ligula in nunc bibendum fringilla a eu lectus.
 
     assignments:
       - title: RadarSimPy
         link: "https://zpeng.me/index.php/radarsimpy/"
         tagline: "A Radar Simulator built with Python."
 
-      #- title: DevStudio
-      #  link: "#"
-      #  tagline: "A responsive website template designed to help web developers/designers market their services."
+      - title: Antenna Array Analysis
+        link: "https://zpeng.me/index.php/antenna-array-analysis/"
+        tagline: "A simple GUI tool for antenna array analysis."
 
-      #- title: Tempo
-      #  link: "#"
-      #  tagline: "A responsive website template designed to help startups promote their products or services and to attract users &amp; investors"
+      - title: Antenna Models
+       link: "https://zpeng.me/index.php/antenna-models/"
+       tagline: "Antenna simulation models used in my researches and projects."
 
-      #- title: Atom
-      #  link: "#"
-      #  tagline: "A comprehensive website template solution for startups/developers to market their mobile apps."
+      - title: Microwave Structures
+       link: "https://zpeng.me/index.php/microwave-structures/"
+       tagline: "Design files of microwave structures used in my researches and projects."
 
-      #- title: Delta
-      #  link: "#"
-      #  tagline: "A responsive Bootstrap one page theme designed to help app developers promote their mobile apps"
+      - title: Portable 24-GHz 3D MIMO Radar
+       link: "https://zpeng.me/index.php/portable-24-ghz-3d-mimo-radar/"
+       tagline: "A portable 24-GHz 3D MIMO radar system providing 90° field of view and ±1.5° angular resolution in both azimuth and elevation."
 
 publications:
     title: Publications
