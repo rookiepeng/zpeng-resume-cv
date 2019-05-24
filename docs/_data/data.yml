@@ -93,34 +93,15 @@ skills:
     title: Skills
 
     toolset:
-      - name: CST Microwave Studio
-    #    level: 100%
+      - name: Radar signal processing
+      
+      - name: Matlab / Python
 
-      - name: Ansys HFSS
-    #    level: 100%
+      - name: Java / C / C++ / Verilog
 
-      - name: Keysight ADS
-    #    level: 100%
+      - name: CST Microwave Studio / Ansys HFSS / Keysight ADS
 
-      - name: Cadence Virtuoso
-    #    level: 100%
-
-      - name: Cadence Allegro
-    #    level: 100%
-
-      - name: Matlab
-    #    level: 100%
-
-      - name: Python
-    #    level: 100%
-
-      - name: Java
-    #    level: 100%
-
-      - name: C/C++
-    #    level: 100%
-
-      - name: Verilog HDL
+      - name: Cadence Virtuoso / Allegro
     #    level: 100%
 
 projects:
