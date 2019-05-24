@@ -126,7 +126,7 @@ skills:
 projects:
     title: Projects
     intro: >
-    Selected projects.
+      Selected projects.
 
     assignments:
       - title: RadarSimPy
@@ -138,16 +138,16 @@ projects:
         tagline: "A simple GUI tool for antenna array analysis."
 
       - title: Antenna Models
-       link: "https://zpeng.me/index.php/antenna-models/"
-       tagline: "Antenna simulation models used in my researches and projects."
+        link: "https://zpeng.me/index.php/antenna-models/"
+        tagline: "Antenna simulation models used in my researches and projects."
 
       - title: Microwave Structures
-       link: "https://zpeng.me/index.php/microwave-structures/"
-       tagline: "Design files of microwave structures used in my researches and projects."
+        link: "https://zpeng.me/index.php/microwave-structures/"
+        tagline: "Design files of microwave structures used in my researches and projects."
 
       - title: Portable 24-GHz 3D MIMO Radar
-       link: "https://zpeng.me/index.php/portable-24-ghz-3d-mimo-radar/"
-       tagline: "A portable 24-GHz 3D MIMO radar system providing 90° field of view and ±1.5° angular resolution in both azimuth and elevation."
+        link: "https://zpeng.me/index.php/portable-24-ghz-3d-mimo-radar/"
+        tagline: "A portable 24-GHz 3D MIMO radar system providing 90° field of view and ±1.5° angular resolution in both azimuth and elevation."
 
 publications:
     title: Publications
