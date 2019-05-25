@@ -111,10 +111,6 @@ projects:
       Selected projects.
 
     assignments:
-      - title: RadarSimPy
-        link: "https://zpeng.me/index.php/radarsimpy/"
-        tagline: "A Radar Simulator built with Python."
-
       - title: Antenna array analysis
         link: "https://zpeng.me/index.php/antenna-array-analysis/"
         tagline: "A simple GUI tool for antenna array analysis."
