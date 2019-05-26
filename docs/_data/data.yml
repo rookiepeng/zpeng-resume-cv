@@ -123,6 +123,10 @@ projects:
         link: "https://zpeng.me/index.php/k-band-2d-rf-beamforming-fmcw-radar/"
         tagline: "A short-range localization radar with beamforming capability in K-band."
 
+      - title: Multi-Mode Radar
+        link: "https://zpeng.me/index.php/k-band-portable-multi-mode-radar/"
+        tagline: "A portable K-band multi-mode radar for short-range localization and vital sign detection."
+
       - title: Antenna models
         link: "https://zpeng.me/index.php/antenna-models/"
         tagline: "Antenna simulation models in my researches and projects."
