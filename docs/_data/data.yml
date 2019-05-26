@@ -115,6 +115,14 @@ projects:
         link: "https://zpeng.me/index.php/antenna-array-analysis/"
         tagline: "A simple GUI tool for antenna array analysis."
 
+      - title: 3D MIMO radar
+        link: "https://zpeng.me/index.php/portable-24-ghz-3d-mimo-radar/"
+        tagline: "A portable 24-GHz 3D MIMO radar system."
+
+      - title: Phased array radar
+        link: "https://zpeng.me/index.php/k-band-2d-rf-beamforming-fmcw-radar/"
+        tagline: "A short-range localization radar with beamforming capability in K-band."
+
       - title: Antenna models
         link: "https://zpeng.me/index.php/antenna-models/"
         tagline: "Antenna simulation models in my researches and projects."
@@ -122,10 +130,6 @@ projects:
       - title: Microwave structures
         link: "https://zpeng.me/index.php/microwave-structures/"
         tagline: "Design files of microwave structures in my researches and projects."
-
-      - title: 3D MIMO radar
-        link: "https://zpeng.me/index.php/portable-24-ghz-3d-mimo-radar/"
-        tagline: "A portable 24-GHz 3D MIMO radar system."
 
 publications:
     title: Publications
