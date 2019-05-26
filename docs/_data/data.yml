@@ -108,7 +108,7 @@ skills:
 projects:
     title: Projects
     intro: >
-      Selected projects.
+      Featured projects.
 
     assignments:
       - title: Antenna array analysis
