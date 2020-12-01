@@ -76,7 +76,7 @@ experiences:
           - Design and build next generation radar systems for active safety and autonomous vehicles
 
     - role: Guest Editor
-      time: Mar. 2019 - Present
+      time: Mar. 2019 - Jun. 2020
       company: MDPI Remote Sensing Journal
       details: |
           - Guest editor for <a href="https://www.mdpi.com/journal/remotesensing/special_issues/radar_lifeactivities" target="_blank" rel="nofollow">Remote Sensing journal special issue: Radar Remote Sensing on Life Activities</a>
@@ -110,6 +110,14 @@ projects:
       Featured projects.
 
     assignments:
+      - title: RadarSimPy
+        link: "https://zpeng.me/index.php/radarsimpy/"
+        tagline: "A radar simulator built with Python and C++."
+      
+      - title: SensorView
+        link: "https://zpeng.me/index.php/sensorview/"
+        tagline: "A lightweight sensor data visualization and analysis tool."
+
       - title: Antenna array analysis
         link: "https://zpeng.me/index.php/antenna-array-analysis/"
         tagline: "A simple GUI tool for antenna array analysis."
@@ -140,7 +148,7 @@ publications:
       Featured publications. <a href="https://zpeng.me/index.php/publications/" target="_blank" rel="nofollow">Check the full list</a>
 
     papers:
-      - title: "Chapter 1: FMCW Radar System for Short-Range Micro-Motion Sensing in \"Short-Range Micro-Motion Sensing: Hardware, signal processing, and machine learning\""
+      - title: "Chapter 5: FMCW Radar System for Short-Range Micro-Motion Sensing in \"Short-Range Micro-Motion Sensing: Hardware, signal processing, and machine learning\""
         authors: Z. Peng, C. Li, R. Gómez-García, J.-M. Muñoz-Ferreras
         conference: "Raleigh, NC: SCITECH PUB, 2019"
 
