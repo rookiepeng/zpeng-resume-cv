@@ -111,27 +111,27 @@ projects:
 
     assignments:
       - title: RadarSimPy
-        link: "https://zpeng.me/index.php/radarsimpy/"
+        link: "https://zpeng.me/index.php/2019/04/07/radarsimpy/"
         tagline: "A radar simulator built with Python and C++."
       
       - title: SensorView
-        link: "https://zpeng.me/index.php/sensorview/"
+        link: "https://zpeng.me/index.php/2020/11/11/sensorview/"
         tagline: "A lightweight sensor data visualization and analysis tool."
 
       - title: Antenna array analysis
-        link: "https://zpeng.me/index.php/antenna-array-analysis/"
+        link: "https://zpeng.me/index.php/2019/02/11/antenna-array-analysis/"
         tagline: "A simple GUI tool for antenna array analysis."
 
       - title: 3D MIMO radar
-        link: "https://zpeng.me/index.php/portable-24-ghz-3d-mimo-radar/"
+        link: "https://zpeng.me/index.php/2017/09/27/portable-24-ghz-3d-mimo-radar/"
         tagline: "A portable 24-GHz 3D MIMO radar system."
 
       - title: Phased array radar
-        link: "https://zpeng.me/index.php/k-band-2d-rf-beamforming-fmcw-radar/"
+        link: "https://zpeng.me/index.php/2017/01/28/k-band-2d-rf-beamforming-fmcw-radar/"
         tagline: "A short-range localization radar with beamforming capability in K-band."
 
       - title: Multi-Mode Radar
-        link: "https://zpeng.me/index.php/k-band-portable-multi-mode-radar/"
+        link: "https://zpeng.me/index.php/2017/01/28/k-band-portable-multi-mode-radar/"
         tagline: "A portable K-band multi-mode radar for short-range localization and vital sign detection."
 
       - title: Antenna models
