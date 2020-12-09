@@ -135,11 +135,11 @@ projects:
         tagline: "A portable K-band multi-mode radar for short-range localization and vital sign detection."
 
       - title: Antenna models
-        link: "https://zpeng.me/index.php/antenna-models/"
+        link: "https://github.com/rookiepeng/antenna-models"
         tagline: "Antenna simulation models in my researches and projects."
 
       - title: Microwave structures
-        link: "https://zpeng.me/index.php/microwave-structures/"
+        link: "https://github.com/rookiepeng/microwave-structures"
         tagline: "Design files of microwave structures in my researches and projects."
 
 publications:
