@@ -17,4 +17,4 @@ jobs:
         if: success()
         with:
           name: zpeng_cv
-          path: zpeng_cv.pdf
+          path: ./LaTeX/zpeng_cv.pdf
