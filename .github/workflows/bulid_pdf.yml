@@ -9,6 +9,6 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
-          working-directory: ./LaTeX
           root_file: zpeng_cv.tex
           latexmk_use_xelatex: true
+          working-directory: LaTeX
