@@ -12,3 +12,9 @@ jobs:
           root_file: zpeng_cv.tex
           latexmk_use_xelatex: true
           working_directory: ./LaTeX
+      - name: Archive documentation
+        uses: actions/upload-artifact@v2
+        if: success()
+        with:
+          name: zpeng_cv
+          path: zpeng_cv.pdf
