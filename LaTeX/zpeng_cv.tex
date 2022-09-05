@@ -7,6 +7,8 @@
 % A4 paper size by default, use 'letterpaper' for US letter
 \documentclass[12pt, letterpaper]{awesome-cv}
 
+\usepackage{lastpage}
+
 \RequirePackage[backend=biber,style=ieee,sorting=none]{biblatex}
 
 %% For removing numbering entirely when using a numeric style
@@ -127,7 +129,7 @@
 \makecvfooter
     {\today}
     {Zhengyu~Peng}
-    {\thepage}
+    {\thepage/\pageref{LastPage}}
 
 %-------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
