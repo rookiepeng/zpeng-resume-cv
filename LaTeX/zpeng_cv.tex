@@ -7,8 +7,52 @@
 % A4 paper size by default, use 'letterpaper' for US letter
 \documentclass[12pt, letterpaper]{awesome-cv}
 
+\RequirePackage[backend=biber,style=ieee,sorting=none]{biblatex}
+
+%% For removing numbering entirely when using a numeric style
+%\setlength{\bibhang}{1em}
+%\DeclareFieldFormat{labelnumberwidth}{\makebox[\bibhang][l]{\itemmarker}}
+% \setlength{\biblabelsep}{0pt}
+%\defbibheading{pubtype}{\cvsubsection{#1}}
+%\renewcommand{\bibsetup}{\vspace*{-\baselineskip}}
+%\AtEveryBibitem{\makebox[\bibhang][l]{\itemmarker}}
+%\setlength{\bibitemsep}{0.25\baselineskip}
+
+% For fundamental structures
+\renewcommand*{\headerfirstnamestyle}[1]{{\fontsize{24pt}{1em}\headerfont\color{graytext} #1}}
+\renewcommand*{\headerlastnamestyle}[1]{{\fontsize{24pt}{1em}\headerfont\bfseries\color{text} #1}}
+\renewcommand*{\headerpositionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\scshape\color{awesome} #1}}
+\renewcommand*{\headeraddressstyle}[1]{{\fontsize{9pt}{1em}\headerfont\itshape\color{lighttext} #1}}
+\renewcommand*{\headersocialstyle}[1]{{\fontsize{9pt}{1em}\headerfont\color{text} #1}}
+
+\renewcommand*{\paragraphstyle}{\fontsize{11pt}{1.2em}\bodyfont\upshape\color{text}}
+
+% For elements of entry
+\renewcommand*{\entrytitlestyle}[1]{{\fontsize{12pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\entrypositionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\renewcommand*{\entrydatestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\slshape\color{graytext} #1}}
+\renewcommand*{\entrylocationstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\slshape\color{awesome} #1}}
+\renewcommand*{\descriptionstyle}[1]{{\fontsize{11pt}{1.2em}\bodyfont\upshape\color{text} #1}}
+
+% For elements of subentry
+\renewcommand*{\subentrytitlestyle}[1]{{\fontsize{12pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
+\renewcommand*{\subentrypositionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\renewcommand*{\subentrydatestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\slshape\color{graytext} #1}}
+\renewcommand*{\subentrylocationstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\slshape\color{awesome} #1}}
+\renewcommand*{\subdescriptionstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\upshape\color{text} #1}}
+
+% For elements of honor
+\renewcommand*{\honortitlestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\color{graytext} #1}}
+\renewcommand*{\honorpositionstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\honordatestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\color{graytext} #1}}
+\renewcommand*{\honorlocationstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\slshape\color{awesome} #1}}
+
+% For elements of skill
+\renewcommand*{\skilltypestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\skillsetstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\color{text} #1}}
+
 % Configure page margins with geometry
-\geometry{left=2.5cm, top=2.5cm, right=2.5cm, bottom=2.5cm, footskip=.5cm}
+\geometry{left=2.5cm, top=2cm, right=2.5cm, bottom=2cm, footskip=.5cm}
 
 % Specify the location of the included fonts
 \fontdir[fonts/]
@@ -16,9 +60,9 @@
 % Color for highlights
 % Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
 %                 awesome-nephritis, awesome-concrete, awesome-darknight
-\colorlet{awesome}{awesome-red}
+% \colorlet{awesome}{awesome-red}
 % Uncomment if you would like to specify your own color
-% \definecolor{awesome}{HTML}{CA63A8}
+\definecolor{awesome}{HTML}{1976D2}
 
 % Colors for text
 % Uncomment if you would like to specify your own color
