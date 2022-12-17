@@ -42,7 +42,7 @@ sidebar:
 career-profile:
     title: Career Profile
     summary: |
-      Senior radar systems engineer with the expertise and experience in automotive radar, radar signal processing, mmWave and microwave systems, antenna array, and beamforming
+      A highly skilled senior radar systems engineer with expertise in electrical engineering, automotive radar, radar signal processing, and mm-wave and microwave systems, as well as editorial experience as an associate editor for the IEEE Transactions on Instrumentation and Measurement and a member of the SPIE Defense+Commercial Sensing Radar Sensor Technology Committee.
 
 education:
     - degree: Ph.D. in Electrical Engineering
@@ -154,9 +154,9 @@ publications:
       Featured publications. <a href="https://zpeng.me/index.php/publications/" target="_blank" rel="nofollow">Check the full list</a>
 
     papers:
-      - title: "Chapter 5: FMCW Radar System for Short-Range Micro-Motion Sensing in \"Short-Range Micro-Motion Sensing: Hardware, signal processing, and machine learning\""
-        authors: Z. Peng, C. Li, R. Gómez-García, J.-M. Muñoz-Ferreras
-        conference: "Raleigh, NC: SCITECH PUB, 2019"
+      - title: "Modern Radar for Automotive Applications"
+        authors: Z. Peng, C. Li, and F. Uysal, Eds.
+        conference: SCITECH PUB, 2022
 
       - title: "Portable microwave radar systems for short-range localization and life tracking: a review"
         authors: Z. Peng, C. Li
