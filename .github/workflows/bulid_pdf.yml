@@ -1,5 +1,13 @@
 name: Build LaTeX document
+
 on: [push]
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build_latex:
     runs-on: ubuntu-latest
@@ -30,3 +38,20 @@ jobs:
         with:
           name: zpeng_resume
           path: ./LaTeX/zpeng_resume.pdf
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './LaTeX/zpeng_cv.pdf'
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './LaTeX/zpeng_resume.pdf'
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './README.md'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
