@@ -13,7 +13,7 @@ jobs:
           latexmk_use_xelatex: true
           working_directory: ./LaTeX
       - name: Archive documentation
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         if: success()
         with:
           name: zpeng_cv
