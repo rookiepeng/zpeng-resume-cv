@@ -1,0 +1,153 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+%-------------------------------------------------------------------------------
+% CONFIGURATIONS
+%-------------------------------------------------------------------------------
+% A4 paper size by default, use 'letterpaper' for US letter
+\documentclass[12pt, letterpaper]{awesome-cv}
+
+\usepackage{lastpage}
+
+\RequirePackage[backend=biber,style=ieee,sorting=none]{biblatex}
+
+%% For removing numbering entirely when using a numeric style
+%\setlength{\bibhang}{1em}
+%\DeclareFieldFormat{labelnumberwidth}{\makebox[\bibhang][l]{\itemmarker}}
+% \setlength{\biblabelsep}{0pt}
+%\defbibheading{pubtype}{\cvsubsection{#1}}
+%\renewcommand{\bibsetup}{\vspace*{-\baselineskip}}
+%\AtEveryBibitem{\makebox[\bibhang][l]{\itemmarker}}
+%\setlength{\bibitemsep}{0.25\baselineskip}
+
+% For fundamental structures
+\renewcommand*{\headerfirstnamestyle}[1]{{\fontsize{24pt}{1em}\headerfont\color{graytext} #1}}
+\renewcommand*{\headerlastnamestyle}[1]{{\fontsize{24pt}{1em}\headerfont\bfseries\color{text} #1}}
+\renewcommand*{\headerpositionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\scshape\color{awesome} #1}}
+\renewcommand*{\headeraddressstyle}[1]{{\fontsize{9pt}{1em}\headerfont\itshape\color{lighttext} #1}}
+\renewcommand*{\headersocialstyle}[1]{{\fontsize{9pt}{1em}\headerfont\color{text} #1}}
+
+\renewcommand*{\paragraphstyle}{\fontsize{11pt}{1.2em}\bodyfont\upshape\color{text}}
+
+% For elements of entry
+\renewcommand*{\entrytitlestyle}[1]{{\fontsize{12pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\entrypositionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\renewcommand*{\entrydatestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\slshape\color{graytext} #1}}
+\renewcommand*{\entrylocationstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\slshape\color{awesome} #1}}
+\renewcommand*{\descriptionstyle}[1]{{\fontsize{11pt}{1.2em}\bodyfont\upshape\color{text} #1}}
+
+% For elements of subentry
+\renewcommand*{\subentrytitlestyle}[1]{{\fontsize{12pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
+\renewcommand*{\subentrypositionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\renewcommand*{\subentrydatestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\slshape\color{graytext} #1}}
+\renewcommand*{\subentrylocationstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\slshape\color{awesome} #1}}
+\renewcommand*{\subdescriptionstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\upshape\color{text} #1}}
+
+% For elements of honor
+\renewcommand*{\honortitlestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\color{graytext} #1}}
+\renewcommand*{\honorpositionstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\honordatestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\color{graytext} #1}}
+\renewcommand*{\honorlocationstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\slshape\color{awesome} #1}}
+
+% For elements of skill
+\renewcommand*{\skilltypestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\skillsetstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\color{text} #1}}
+
+% Configure page margins with geometry
+\geometry{left=2.5cm, top=2cm, right=2.5cm, bottom=2cm, footskip=.5cm}
+
+% Specify the location of the included fonts
+\fontdir[fonts/]
+
+% Color for highlights
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%                 awesome-nephritis, awesome-concrete, awesome-darknight
+% \colorlet{awesome}{awesome-red}
+% Uncomment if you would like to specify your own color
+\definecolor{awesome}{HTML}{1976D2}
+
+% Colors for text
+% Uncomment if you would like to specify your own color
+%\definecolor{darktext}{HTML}{414141}
+\definecolor{text}{HTML}{333333}
+\definecolor{graytext}{HTML}{333333}
+\definecolor{lighttext}{HTML}{333333}
+
+% Set false if you don't want to highlight section with awesome color
+\setbool{acvSectionColorHighlight}{true}
+
+% If you would like to change the social information separator from a pipe (|) to something else
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+
+%-------------------------------------------------------------------------------
+%	PERSONAL INFORMATION
+%	Comment any of the lines below if they are not required
+%-------------------------------------------------------------------------------
+% Available options: circle|rectangle,edge/noedge,left/right
+% \photo{./examples/profile.png}
+\name{Zhengyu}{Peng}
+\position{Senior Radar Systems Engineer{\enskip\cdotp\enskip}Ph.D.}
+\address{925 E Edenbridge Way, Westfield, IN 46074, USA}
+
+\mobile{(+1) 806-392-6110}
+\email{zpeng.me@gmail.com}
+\homepage{zpeng.me}
+\github{rookiepeng}
+\googlescholar{0vQPboMAAAAJ}{Z. Peng}
+% \linkedin{posquit0}
+% \gitlab{gitlab-id}
+% \stackoverflow{SO-id}{SO-name}
+% \twitter{@twit}
+% \skype{skype-id}
+% \reddit{reddit-id}
+% \extrainfo{extra informations}
+
+%\quote{``Be the change that you want to see in the world."}
+
+% bibliography with mutiple entries
+%\usepackage[resetlabels]{multibib}
+%\newcites{book}{Books}
+%\newcites{journal}{Journal Articles}
+%\newcites{proceeding}{Conference Proceedings}
+%\newcites{patent}{Patents}
+
+\addbibresource{cv/books.bib}
+\addbibresource{cv/journals.bib}
+\addbibresource{cv/proceedings.bib}
+\addbibresource{cv/patents.bib}
+
+%-------------------------------------------------------------------------------
+\begin{document}
+
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader
+
+% Print the footer with 3 arguments(<left>, <center>, <right>)
+% Leave any of these blank if they are not needed
+\makecvfooter
+    {\today}
+    {Zhengyu~Peng}
+    {\thepage/\pageref{LastPage}}
+
+%-------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%-------------------------------------------------------------------------------
+
+%-------------------------------------------------------------------------------
+%	CV/RESUME CONTENT
+%	Each section is imported separately, open each file in turn to modify content
+%-------------------------------------------------------------------------------
+\input{cv/summary.tex}
+\input{cv/experience.tex}
+\input{cv/education.tex}
+\input{cv/skills.tex}
+% \newpage
+% \input{cv/projects.tex}
+% \input{cv/honors.tex}
+% \input{cv/activities.tex}
+% \input{cv/publications.tex}
+
+%-------------------------------------------------------------------------------
+\end{document}
