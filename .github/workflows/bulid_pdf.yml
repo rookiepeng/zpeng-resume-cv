@@ -40,18 +40,22 @@ jobs:
           path: ./LaTeX/zpeng_resume.pdf
       - name: Setup Pages
         uses: actions/configure-pages@v3
+      - name: Generate documentation
+        run: |
+          mkdir pages
+      - name: Generate documentation
+        run: |
+          cp ./LaTeX/zpeng_cv.pdf ./pages
+      - name: Generate documentation
+        run: |
+          cp ./LaTeX/zpeng_resume.pdf ./pages
+      - name: Generate documentation
+        run: |
+          cp ./README.md ./pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: './LaTeX/zpeng_cv.pdf'
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: './LaTeX/zpeng_resume.pdf'
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: './README.md'
+          path: './pages'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
