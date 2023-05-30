@@ -49,9 +49,6 @@ jobs:
       - name: Generate documentation
         run: |
           cp ./LaTeX/zpeng_resume.pdf ./pages
-      - name: Generate documentation
-        run: |
-          cp ./README.md ./pages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
