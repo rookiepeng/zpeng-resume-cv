@@ -65,9 +65,10 @@
 %-------------------------------------------------------------------------------
 % TYPE
 %
-% IBM Plex Sans for everything, with Plex Mono for dates. Plex is a technical
-% family with real character at small sizes, and setting the rail in mono gives
-% the dates aligned figures and a distinct texture from the prose beside them.
+% IBM Plex Sans throughout: a technical family with real character at small
+% sizes. Dates use its tabular figures rather than a mono face, so digits line
+% up down the rail without the width a monospace date needs — which is what
+% made every multi-month range wrap.
 % Falls back to the class defaults where Plex is not installed.
 %-------------------------------------------------------------------------------
 \IfFileExists{plex-sans.sty}{%
