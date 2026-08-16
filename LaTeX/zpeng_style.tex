@@ -1,161 +1,291 @@
 %-------------------------------------------------------------------------------
 % SHARED STYLE
+%
 % Single source of truth for the visual design of both zpeng_cv.tex and
 % zpeng_resume.tex. Edit here, and both documents stay in sync.
+%
+% The design is built on one idea: a single left rail runs down every page.
+% Dates, skill categories, honor years and project names all sit in that rail,
+% and their content starts at the same x-position. That gives the document one
+% vertical rhythm instead of four different ones, and makes it scannable by
+% time (experience, education, honors) or by topic (skills, projects).
+%
+% The rail width is the only number that matters; everything else derives
+% from it. Change \cvrailwidth and the whole document reflows coherently.
 %-------------------------------------------------------------------------------
 
 \usepackage{lastpage}
 \usepackage{microtype}
 \usepackage{needspace}
+\usepackage{calc}
+\usepackage{changepage}
 
 \RequirePackage[backend=biber,style=ieee,sorting=none]{biblatex}
 
 %-------------------------------------------------------------------------------
-% COLOR PALETTE
-%
-% One accent hue (matching the accent used on zpeng.me) plus a five-step
-% neutral ramp. The ramp is what creates hierarchy: titles sit darkest,
-% supporting metadata steps back, rules and the footer stay quiet.
+% THE GRID
 %-------------------------------------------------------------------------------
-\definecolor{awesome}{HTML}{1976D2}      % primary accent (zpeng.me blue)
-\definecolor{accentdeep}{HTML}{14538D}   % deeper accent for the surname
+\geometry{left=1.9cm, top=1.5cm, right=1.9cm, bottom=1.6cm, footskip=.7cm}
 
-\definecolor{darktext}{HTML}{22252A}     % entry / section titles
-\definecolor{text}{HTML}{343A41}         % body copy
-\definecolor{graytext}{HTML}{5C6570}     % roles, dates, secondary metadata
-\definecolor{lighttext}{HTML}{8A929B}    % header location, footer
-\colorlet{sectiondivider}{awesome!25!white}
+% Sans-serif text does not want the extra sentence spacing, and abbreviations
+% like "Ph.D." and "Jun." trigger it constantly in this document.
+\frenchspacing
 
-% Keep the accent-colored first letters of each section heading.
-\setbool{acvSectionColorHighlight}{true}
+\newlength{\cvrailwidth}    \setlength{\cvrailwidth}{3.0cm}
+\newlength{\cvrailgap}      \setlength{\cvrailgap}{0.45cm}
 
-%-------------------------------------------------------------------------------
-% TYPE SCALE
-%
-% Roughly a 1.15 modular scale off a 10pt body. The point of the scale is
-% contrast: an entry title, its role, and its date must be visibly three
-% different things. Weight and color do most of that work, size does the rest.
-%-------------------------------------------------------------------------------
-
-% Header
-\renewcommand*{\headerfirstnamestyle}[1]{{\fontsize{26pt}{1em}\headerfontlight\color{graytext} #1}}
-\renewcommand*{\headerlastnamestyle}[1]{{\fontsize{26pt}{1em}\headerfont\bfseries\color{accentdeep} #1}}
-\renewcommand*{\headerpositionstyle}[1]{{\fontsize{9.5pt}{1.2em}\bodyfont\scshape\color{awesome} #1}}
-\renewcommand*{\headeraddressstyle}[1]{{\fontsize{8.5pt}{1.2em}\headerfont\itshape\color{lighttext} #1}}
-\renewcommand*{\headersocialstyle}[1]{{\fontsize{8.5pt}{1.2em}\headerfont\color{text} #1}}
-\renewcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
-
-% Sections
-% \@sectioncolor is an internal of the class, so @ must be a letter here.
-\makeatletter
-\renewcommand*{\sectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{darktext}\@sectioncolor #1}}
-\makeatother
-\renewcommand*{\subsectionstyle}[1]{{\fontsize{10.5pt}{1em}\bodyfont\scshape\textcolor{graytext}{#1}}}
-\renewcommand*{\paragraphstyle}{\fontsize{10pt}{1.38em}\bodyfontlight\upshape\color{text}}
-
-% Entries
-\renewcommand*{\entrytitlestyle}[1]{{\fontsize{11pt}{1.15em}\bodyfont\bfseries\color{darktext} #1}}
-\renewcommand*{\entrypositionstyle}[1]{{\fontsize{9.5pt}{1.15em}\bodyfont\scshape\color{graytext} #1}}
-\renewcommand*{\entrydatestyle}[1]{{\fontsize{9.5pt}{1.15em}\bodyfontlight\slshape\color{graytext} #1}}
-\renewcommand*{\entrylocationstyle}[1]{{\fontsize{9.5pt}{1.15em}\bodyfontlight\slshape\color{awesome} #1}}
-\renewcommand*{\descriptionstyle}[1]{{\fontsize{10pt}{1.35em}\bodyfontlight\upshape\color{text} #1}}
-
-% Sub-entries
-\renewcommand*{\subentrytitlestyle}[1]{{\fontsize{10pt}{1.15em}\bodyfont\mdseries\color{darktext} #1}}
-\renewcommand*{\subentrypositionstyle}[1]{{\fontsize{9pt}{1.15em}\bodyfont\scshape\color{graytext} #1}}
-\renewcommand*{\subentrydatestyle}[1]{{\fontsize{9pt}{1.15em}\bodyfontlight\slshape\color{graytext} #1}}
-\renewcommand*{\subentrylocationstyle}[1]{{\fontsize{9pt}{1.15em}\bodyfontlight\slshape\color{awesome} #1}}
-\renewcommand*{\subdescriptionstyle}[1]{{\fontsize{9.5pt}{1.3em}\bodyfontlight\upshape\color{text} #1}}
-
-% Honors
-\renewcommand*{\honortitlestyle}[1]{{\fontsize{9.5pt}{1.25em}\bodyfontlight\color{graytext} #1}}
-\renewcommand*{\honorpositionstyle}[1]{{\fontsize{9.5pt}{1.25em}\bodyfont\bfseries\color{darktext} #1}}
-\renewcommand*{\honordatestyle}[1]{{\fontsize{9.5pt}{1.25em}\bodyfontlight\color{graytext} #1}}
-\renewcommand*{\honorlocationstyle}[1]{{\fontsize{9.5pt}{1.25em}\bodyfontlight\slshape\color{awesome} #1}}
-
-% Skills
-\renewcommand*{\skilltypestyle}[1]{{\fontsize{9.5pt}{1.3em}\bodyfont\bfseries\color{darktext} #1}}
-\renewcommand*{\skillsetstyle}[1]{{\fontsize{9.5pt}{1.3em}\bodyfontlight\color{text} #1}}
-
-%-------------------------------------------------------------------------------
-% LAYOUT & RHYTHM
-%-------------------------------------------------------------------------------
-\geometry{left=2.2cm, top=1.8cm, right=2.2cm, bottom=1.9cm, footskip=.6cm}
+% Width of the content column, given a rail of width #1.
+\newcommand{\cvbodywidth}[1]{\dimexpr\textwidth-#1-\cvrailgap\relax}
 
 % Long unbreakable strings in bibliography entries (paper titles, URLs) can
 % otherwise push a line past the right margin.
 \setlength{\emergencystretch}{2.5em}
 
-\renewcommand{\acvHeaderAfterNameSkip}{1.2mm}
-\renewcommand{\acvHeaderAfterPositionSkip}{1.4mm}
-\renewcommand{\acvHeaderAfterAddressSkip}{0.6mm}
-\renewcommand{\acvHeaderAfterSocialSkip}{4mm}
-\renewcommand{\acvSectionTopSkip}{4.5mm}
-\renewcommand{\acvSectionContentTopSkip}{2.8mm}
+%-------------------------------------------------------------------------------
+% COLOR PALETTE
+%
+% One accent hue (the blue used on zpeng.me, darkened for print contrast)
+% plus a four-step neutral ramp. The ramp is what creates hierarchy: titles
+% sit darkest, supporting metadata steps back, rules stay quiet.
+%-------------------------------------------------------------------------------
+\definecolor{awesome}{HTML}{1565C0}      % accent
+\definecolor{accentdeep}{HTML}{0D3F73}   % deepest accent, for the surname
 
-% Separator between the header's social links.
-\renewcommand{\acvHeaderSocialSep}{\hspace*{0.6em}\textcolor{sectiondivider}{\textbar}\hspace*{0.6em}}
+\definecolor{darktext}{HTML}{1A1D21}     % entry and section titles
+\definecolor{text}{HTML}{2E3439}         % body copy
+\definecolor{graytext}{HTML}{646E7A}     % roles, dates, secondary metadata
+\definecolor{lighttext}{HTML}{959DA6}    % header location, footer
+\colorlet{sectiondivider}{awesome!18!white}
 
-\makeatletter
-% A lighter section rule, and a \needspace guard so a heading is never
-% stranded alone at the foot of a page with its content overleaf.
-\renewcommand{\cvsection}[1]{%
-  \needspace{5\baselineskip}%
-  \vspace{\acvSectionTopSkip}
-  \sectionstyle{#1}
-  \phantomsection
-  \hspace{0.6em}\color{sectiondivider}\vhrulefill{1.1pt}%
+% Awesome-CV tints only the first three characters of a section heading, which
+% reads as a printing accident ("Sum"mary, "Hon"ors) rather than as a design.
+% The whole heading carries the accent instead.
+\setbool{acvSectionColorHighlight}{false}
+
+%-------------------------------------------------------------------------------
+% TYPE
+%
+% IBM Plex Sans for everything, with Plex Mono for dates. Plex is a technical
+% family with real character at small sizes, and setting the rail in mono gives
+% the dates aligned figures and a distinct texture from the prose beside them.
+% Falls back to the class defaults where Plex is not installed.
+%-------------------------------------------------------------------------------
+\IfFileExists{plex-sans.sty}{%
+  \usepackage[sfdefault,scale=1.0]{plex-sans}%
+  \renewcommand*{\headerfont}{\sffamily}
+  \renewcommand*{\headerfontlight}{\sffamily}
+  \renewcommand*{\bodyfont}{\sffamily}
+  \renewcommand*{\bodyfontlight}{\sffamily}
+  \renewcommand*{\footerfont}{\sffamily}
+  \newcommand*{\railfont}{\sffamily\addfontfeature{Numbers=Monospaced}}
+}{%
+  \newcommand*{\railfont}{\bodyfontlight}
 }
 
-% Subsections need a little air above them when they follow body text.
+% Header
+\renewcommand*{\headerfirstnamestyle}[1]{{\fontsize{28pt}{1em}\headerfontlight\color{graytext} #1}}
+\renewcommand*{\headerlastnamestyle}[1]{{\fontsize{28pt}{1em}\headerfont\bfseries\color{accentdeep} #1}}
+\renewcommand*{\headerpositionstyle}[1]{{\fontsize{9.5pt}{1.3em}\bodyfont\scshape\color{awesome} #1}}
+\renewcommand*{\headeraddressstyle}[1]{{\fontsize{9pt}{1.3em}\bodyfontlight\color{lighttext} #1}}
+\renewcommand*{\headersocialstyle}[1]{{\fontsize{8.6pt}{1.3em}\bodyfontlight\color{graytext} #1}}
+\renewcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
+
+% Sections. Uppercase headings need a little tracking to stay legible.
+\newcommand*{\cvletterspace}{\addfontfeature{LetterSpace=7}}
+\renewcommand*{\sectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\bfseries\color{awesome}\cvletterspace #1}}
+\renewcommand*{\subsectionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\scshape\color{graytext}\cvletterspace #1}}
+\renewcommand*{\paragraphstyle}{\fontsize{9.8pt}{1.4em}\bodyfontlight\upshape\color{text}}
+
+% Entries: the role leads, the organization supports it, the date sits in the
+% rail. Three visibly different things.
+\renewcommand*{\entrytitlestyle}[1]{{\fontsize{10.5pt}{1.2em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\entrypositionstyle}[1]{{\fontsize{9.5pt}{1.2em}\bodyfont\color{graytext} #1}}
+\renewcommand*{\entrydatestyle}[1]{{\fontsize{8.6pt}{1.25em}\railfont\color{graytext} #1}}
+\renewcommand*{\entrylocationstyle}[1]{{\fontsize{9.5pt}{1.2em}\bodyfontlight\color{awesome} #1}}
+\newcommand*{\cvdescfont}{\fontsize{9.5pt}{1.29em}\bodyfontlight\upshape\color{text}}
+\renewcommand*{\descriptionstyle}[1]{{\cvdescfont #1}}
+
+% Honors
+\renewcommand*{\honortitlestyle}[1]{{\fontsize{9.5pt}{1.3em}\bodyfontlight\color{graytext} #1}}
+\renewcommand*{\honorpositionstyle}[1]{{\fontsize{9.5pt}{1.3em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\honordatestyle}[1]{{\fontsize{8.6pt}{1.3em}\railfont\color{graytext} #1}}
+\renewcommand*{\honorlocationstyle}[1]{{\fontsize{9.5pt}{1.3em}\bodyfontlight\color{awesome} #1}}
+
+% Rail labels and their values
+\renewcommand*{\skilltypestyle}[1]{{\fontsize{9.5pt}{1.35em}\bodyfont\bfseries\color{darktext} #1}}
+\renewcommand*{\skillsetstyle}[1]{{\fontsize{9.5pt}{1.32em}\bodyfontlight\color{text} #1}}
+
+%-------------------------------------------------------------------------------
+% THE RAIL PRIMITIVE
+%
+% Everything below is built on this: a right-aligned rail box, a gutter, and a
+% content box. Both boxes are top-aligned so the rail label lines up with the
+% first line of its content rather than floating in the middle of it.
+%
+% #2 must not be empty: an empty minipage collapses to zero width and the
+% content silently loses its indent. Adding a \strut to guard against that
+% shifts the rail's first baseline off the content's, so callers pass a label.
+%-------------------------------------------------------------------------------
+\long\def\cvrailline#1#2#3{%
+  \noindent
+  \begin{minipage}[t]{#1}\raggedleft #2\end{minipage}%
+  \hspace{\cvrailgap}%
+  \begin{minipage}[t]{\cvbodywidth{#1}}\raggedright #3\end{minipage}%
+  \par
+}
+
+%-------------------------------------------------------------------------------
+% SECTIONS
+%-------------------------------------------------------------------------------
+\makeatletter
+% The heading sits above a hairline that spans the full measure. \needspace
+% keeps a heading from being stranded alone at the foot of a page.
+\renewcommand{\cvsection}[1]{%
+  \needspace{5\baselineskip}%
+  \par\addvspace{\acvSectionTopSkip}%
+  {\sectionstyle{\MakeUppercase{#1}}}%
+  \phantomsection
+  \hspace{0.7em}\color{sectiondivider}\vhrulefill{1.1pt}%
+  \par\addvspace{1.6mm}%
+}
+
 \renewcommand{\cvsubsection}[1]{%
   \needspace{4\baselineskip}%
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-2mm}
-  \subsectionstyle{#1}
-  \phantomsection
+  \par\addvspace{3.0mm}%
+  \noindent\subsectionstyle{#1}%
+  \par\addvspace{1.0mm}%
 }
 \makeatother
 
+\renewcommand{\acvSectionTopSkip}{3.4mm}
+\renewcommand{\acvSectionContentTopSkip}{2.0mm}
+
 %-------------------------------------------------------------------------------
-% LABELLED LISTS
+% ENTRIES (experience, education)
 %
-% The stock cvskills table sizes its label column naturally and pins the value
-% column to 0.9\textwidth, so any label wider than 0.1\textwidth pushes the
-% value column off the right margin. Fixing the label column keeps the two
-% together inside \textwidth no matter how long a label gets.
+% Rendered as boxes rather than tables, so an entry is atomic: its date, role,
+% organization and bullets can never be split across a page break.
 %-------------------------------------------------------------------------------
-% It is also built on tabular*, which cannot break across pages, so a long
-% list strands a half-empty page ahead of itself. longtable can break.
-\usepackage{longtable}
+\renewenvironment{cventries}{\par\addvspace{\acvSectionContentTopSkip}}{\par}
 
-\newlength{\cvskilllabelwidth}
-\setlength{\cvskilllabelwidth}{3.9cm}
-\newlength{\cvskillgap}
-\setlength{\cvskillgap}{0.55cm}
+\renewcommand*{\cventry}[5]{%
+  \needspace{3\baselineskip}%
+  \par\addvspace{1.5mm}%
+  \cvrailline{\cvrailwidth}{%
+    \entrydatestyle{#4}%
+  }{%
+    \entrytitlestyle{#1}\par\vspace{0.5mm}%
+    \notblank{#2}{\entrypositionstyle{#2}}{}%
+    \notblank{#3}{\entrylocationstyle{\,\textperiodcentered\nobreak\, #3}}{}%
+    \notblank{#2#3}{\par}{}%
+    \vspace{0.6mm}#5%
+  }%
+}
 
-\renewenvironment{cvskills}{%
-  \vspace{\acvSectionContentTopSkip}
-  \vspace{-2.0mm}
-  \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{0pt}
-  \setlength{\LTpre}{0pt}
-  \setlength{\LTpost}{0pt}
-  \setlength{\LTleft}{0pt}
-  \setlength{\LTright}{0pt}
-  \begin{longtable}{@{} R{\cvskilllabelwidth} @{\hspace{\cvskillgap}} L{\textwidth - \cvskilllabelwidth - \cvskillgap} @{}}
+% Bullets inside an entry, indented just enough to read as subordinate.
+\renewenvironment{cvitems}{%
+  \begin{itemize}[leftmargin=1.25em, labelwidth=0.75em, labelsep=0.5em,
+                  topsep=0.5mm, partopsep=0pt, parsep=0pt, itemsep=0.4mm,
+                  align=left]
+    \renewcommand{\labelitemi}{\textcolor{awesome}{\raisebox{0.12ex}{\tiny$\bullet$}}}
+    \cvdescfont
 }{%
-  \end{longtable}
+  \end{itemize}%
 }
 
-% Put a little air between consecutive rows of a skills/projects list.
+%-------------------------------------------------------------------------------
+% LABELLED LISTS (skills, highlights, projects)
+%
+% The stock cvskills is a tabular* whose value column is pinned to
+% 0.9\textwidth regardless of label width, so any long label pushes the value
+% column off the right margin. Built on the rail primitive instead, the two
+% columns always sum to the measure, and rows break across pages freely.
+%
+% Takes an optional rail width, for sections whose labels need more room.
+%-------------------------------------------------------------------------------
+\newlength{\cvskilllabelwidth}
+
+\renewenvironment{cvskills}[1][\cvrailwidth]{%
+  \setlength{\cvskilllabelwidth}{#1}%
+  \par\addvspace{\acvSectionContentTopSkip}%
+}{%
+  \par
+}
+
 \renewcommand*{\cvskill}[2]{%
-  \skilltypestyle{#1} & \skillsetstyle{#2} \\[0.9mm]
+  \needspace{2\baselineskip}%
+  \cvrailline{\cvskilllabelwidth}{\skilltypestyle{#1}}{\skillsetstyle{#2}}%
+  \addvspace{0.9mm}%
 }
 
-% Tighten the gap after an entry that carries no description bullets
-% (used by the education entries). Replaces ad-hoc \vspace{-1.2em} calls.
-\newcommand{\cvnodescgap}{\vspace{-1.1em}}
+%-------------------------------------------------------------------------------
+% HONORS
+%
+% Year in the rail, award in the content column, awarding body and place as
+% supporting text on the same line.
+%-------------------------------------------------------------------------------
+\renewenvironment{cvhonors}{%
+  \par\addvspace{\acvSectionContentTopSkip}%
+}{%
+  \par
+}
+
+\renewcommand*{\cvhonor}[4]{%
+  \needspace{2\baselineskip}%
+  \cvrailline{\cvrailwidth}{\honordatestyle{#4}}{%
+    \honorpositionstyle{#1}%
+    \notblank{#2}{\honortitlestyle{, #2}}{}%
+    \notblank{#3}{\honorlocationstyle{\,\textperiodcentered\nobreak\, #3}}{}%
+  }%
+  \addvspace{0.35mm}%
+}
+
+%-------------------------------------------------------------------------------
+% PARAGRAPHS
+%
+% Indented to the content column so running text lines up with everything else.
+%-------------------------------------------------------------------------------
+\renewenvironment{cvparagraph}{%
+  \par\addvspace{\acvSectionContentTopSkip}%
+  \begin{adjustwidth}{\cvrailwidth+\cvrailgap}{0pt}%
+  \paragraphstyle
+}{%
+  \par
+  \end{adjustwidth}%
+  \addvspace{1.2mm}%
+}
+
+%-------------------------------------------------------------------------------
+% HEADER
+%
+% Left-aligned masthead on the same axis as everything else, closed by a rule.
+%-------------------------------------------------------------------------------
+\renewcommand{\acvHeaderAfterNameSkip}{1.6mm}
+\renewcommand{\acvHeaderAfterPositionSkip}{1.0mm}
+\renewcommand{\acvHeaderAfterAddressSkip}{1.2mm}
+\renewcommand{\acvHeaderAfterSocialSkip}{0mm}
+\renewcommand{\acvHeaderSocialSep}{\hspace*{0.7em}\textcolor{sectiondivider}{\textbar}\hspace*{0.7em}}
+
+\newcommand{\makecvbanner}{%
+  \makecvheader[L]%
+  \vspace{2.2mm}%
+  \noindent\textcolor{awesome}{\rule{\textwidth}{1.0pt}}%
+}
+
+%-------------------------------------------------------------------------------
+% BIBLIOGRAPHY
+%
+% Left at the full measure: indenting six pages of references to the content
+% column would cost a page and buy nothing.
+%-------------------------------------------------------------------------------
+\setlength{\bibitemsep}{0.45\baselineskip}
+\renewcommand*{\bibfont}{\fontsize{9.5pt}{1.3em}\bodyfontlight\color{text}}
+
+%-------------------------------------------------------------------------------
+% HELPERS
+%-------------------------------------------------------------------------------
+% Tighten the gap after an entry that carries no description bullets.
+\newcommand{\cvnodescgap}{}
 
 % An accent-colored hyperlink, for the few places a URL is worth showing.
 \newcommand{\cvurl}[2]{\href{#1}{\textcolor{awesome}{#2}}}

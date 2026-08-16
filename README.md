@@ -36,6 +36,25 @@ service and open-source work that the CV lists in full.
 Anything visual — colors, font sizes, margins, spacing — belongs in
 `zpeng_style.tex`, not in the two driver files.
 
+## The design
+
+Both documents are laid out on a single left rail. Dates, skill categories,
+honor years and project names all sit in that rail, right-aligned; their
+content starts at the same x-position on every page. That gives one vertical
+rhythm rather than a different one per section, and makes the document
+scannable either by time (experience, education, honors) or by topic (skills,
+projects).
+
+Everything is built on one primitive, `\cvrailline{<width>}{<rail>}{<content>}`,
+so `\cventry`, `\cvskill` and `\cvhonor` all share the same geometry.
+`\cvrailwidth` is the number that matters — change it and the whole document
+reflows coherently. Sections whose labels need more room than a date (the
+project lists) pass their own width: `\begin{cvskills}[4.15cm]`.
+
+Type is IBM Plex Sans, with dates set in tabular figures so digits line up
+down the rail. The palette is one accent hue plus a four-step neutral ramp;
+hierarchy comes from weight and tone rather than from size alone.
+
 ## Building locally
 
 Requires a TeX Live installation with XeLaTeX and Biber:
