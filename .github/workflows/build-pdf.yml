@@ -1,0 +1,120 @@
+name: Build PDFs
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One run per branch. Superseded runs on a feature branch are cancelled, but a
+# run on master is left alone so it can finish deploying to Pages.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Compile CV
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: zpeng_cv.tex
+          latexmk_use_xelatex: true
+          working_directory: ./LaTeX
+          # zpeng_style.tex loads IBM Plex behind \IfFileExists and silently
+          # falls back to the class defaults when it is absent, which would
+          # publish a PDF in the wrong typeface without failing. Catch it here.
+          pre_compile: |
+            kpsewhich plex-sans.sty > /dev/null || {
+              echo "::error::plex-sans.sty is missing from this TeX Live image. The documents would build in a fallback typeface instead of IBM Plex Sans."
+              exit 1
+            }
+
+      - name: Compile résumé
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: zpeng_resume.tex
+          latexmk_use_xelatex: true
+          working_directory: ./LaTeX
+
+      # A mistyped \nocite key drops a publication from the CV without failing
+      # the build, so an unresolved citation has to be treated as an error.
+      - name: Check for unresolved citations and references
+        working-directory: ./LaTeX
+        run: |
+          status=0
+          for log in zpeng_cv.log zpeng_resume.log; do
+            if [ ! -f "$log" ]; then
+              echo "::error::$log not found; cannot verify references."
+              status=1
+              continue
+            fi
+            if grep -E "(Citation|Reference) .* undefined" "$log"; then
+              echo "::error file=LaTeX/$log::Unresolved citations or references in $log"
+              status=1
+            fi
+          done
+          exit $status
+
+      - name: Collect PDFs
+        run: |
+          mkdir -p pages
+          cp ./LaTeX/zpeng_cv.pdf ./LaTeX/zpeng_resume.pdf ./pages/
+
+      # Reporting only: page counts are the quickest way to spot that a content
+      # edit has quietly pushed the résumé onto a third page. Never fail here.
+      - name: Summarize output
+        continue-on-error: true
+        run: |
+          command -v pdfinfo > /dev/null || {
+            sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+          }
+          {
+            echo "| Document | Pages | Size |"
+            echo "| --- | ---: | ---: |"
+            for pdf in pages/zpeng_resume.pdf pages/zpeng_cv.pdf; do
+              printf '| %s | %s | %s |\n' \
+                "$(basename "$pdf")" \
+                "$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')" \
+                "$(du -h "$pdf" | cut -f1)"
+            done
+            echo
+            printf 'Overfull boxes: %s\n' \
+              "$(grep -hc 'Overfull \\hbox' LaTeX/zpeng_cv.log LaTeX/zpeng_resume.log \
+                 | awk '{s+=$1} END {print s+0}')"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload PDFs as build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdfs-${{ github.sha }}
+          path: ./pages/*.pdf
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/master'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./pages
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

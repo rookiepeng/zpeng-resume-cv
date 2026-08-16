@@ -27,6 +27,9 @@
 /LaTeX/zpeng_cv.pdf
 /LaTeX/zpeng_resume.pdf
 
+## XeTeX intermediate output
+*.xdv
+
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
 *.bcf

@@ -1,0 +1,22 @@
+version: 2
+
+updates:
+  # The build depends on third-party actions (checkout, latex-action, the Pages
+  # actions). Pinned major versions go stale quietly — upload-artifact@v3 was
+  # retired mid-2025 and silently took this workflow down with it.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/Indiana/Indianapolis"
+    commit-message:
+      prefix: "ci"
+    labels:
+      - "dependencies"
+    # One PR for all of them rather than one per action.
+    groups:
+      actions:
+        patterns:
+          - "*"
