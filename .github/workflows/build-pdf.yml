@@ -21,10 +21,10 @@ jobs:
     timeout-minutes: 20
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Compile CV
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@v4
         with:
           root_file: zpeng_cv.tex
           latexmk_use_xelatex: true
@@ -39,7 +39,7 @@ jobs:
             }
 
       - name: Compile résumé
-        uses: xu-cheng/latex-action@v3
+        uses: xu-cheng/latex-action@v4
         with:
           root_file: zpeng_resume.tex
           latexmk_use_xelatex: true
@@ -93,7 +93,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload PDFs as build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: pdfs-${{ github.sha }}
           path: ./pages/*.pdf
@@ -102,7 +102,7 @@ jobs:
 
       - name: Upload Pages artifact
         if: github.ref == 'refs/heads/master'
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./pages
 
@@ -117,4 +117,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
