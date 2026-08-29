@@ -1,87 +1,94 @@
 % CV only.
 %
-% Changes from the original:
-%   1. The 35-journal reviewer list ran as one continuous \textbullet~ river
-%      across the full measure — about a page of text no one reads linearly.
-%      It is now a lead line ("Reviewer for 35+ journals, including:") followed
-%      by a two-column list, one journal per line: same information, roughly
-%      half the page, and actually scannable. Needs \cvlist from
-%      zpeng_style_patch.tex.
-%   2. The conference TPC list mixed genuine IEEE/SPIE committees with a few
-%      venues of low or contested standing. Those are commented out rather than
-%      deleted — your call, but on a CV they dilute the IEEE entries next to
-%      them. Uncomment if you want the full record.
+% This is where the editorial appointments live now. They used to be duplicated:
+% full \cventry blocks under Experience *and* a bulleted line here. Editorial
+% work is service, not employment, so Experience no longer carries it and this
+% section is the single place the CV states it.
+%
+% The journal-reviewer list used to be 35 names, one per full-measure line, set
+% as a run-on \textbullet river -- a full page of the CV for a list nobody reads
+% linearly. It is now two columns with the per-journal review counts folded in,
+% sorted by count. That is strictly more information in about a third of the
+% space, and it retires cv/activities_back.tex, an uncompiled file that existed
+% only to hold those counts where no reader could see them.
+%
+% The counts below are the breakdown behind \cvReviews and \cvReviewJournals in
+% cv/facts.tex; they sum to 181 reviews across 35 journals.
+%
+% Three 2018 conference committees of contested standing are commented out
+% rather than deleted -- your call, but next to the IEEE and SPIE entries they
+% cost more than they add. Uncomment for the complete record.
 
 \cvsection{Professional Activities}
 
-\cvsubsection{Editorial Roles}
+\cvsubsection{Editorial Appointments}
 
-\begin{cvparagraph}
-    \textbullet~Associate Editor, \emph{IEEE Transactions on Radar Systems} (2025--present)
-    \textbullet~Associate Editor, \emph{IEEE Transactions on Instrumentation and Measurement} (2020--2026)
-    \textbullet~Guest Editor, \emph{Remote Sensing} special issue ``Radar Remote Sensing on Life Activities'' (2019--2020)
-\end{cvparagraph}
+\begin{cvbullets}
+    \item Associate Editor, \emph{IEEE Transactions on Radar Systems}, IEEE AESS (Jun. 2025--present)
+    \item Associate Editor, \emph{IEEE Transactions on Instrumentation and Measurement}, IEEE IMS (Dec. 2020--Jan. 2026); named an Outstanding Reviewer for the journal
+    \item Guest Editor, MDPI \emph{Remote Sensing} special issue ``Radar Remote Sensing on Life Activities'' (2019--2020)
+\end{cvbullets}
 
 \cvsubsection{Technical Committees}
 
-\begin{cvparagraph}
-    \textbullet~SPIE Defense+Commercial Sensing, Radar Sensor Technology Committee (2023--present)
-\end{cvparagraph}
+\begin{cvbullets}
+    \item SPIE Defense+Commercial Sensing, Radar Sensor Technology Committee (2023--present)
+\end{cvbullets}
 
 \cvsubsection{Conference Technical Program Committees}
 
+\begin{cvbullets}
+    \item SPIE Defense+Commercial Sensing, Radar Sensor Technology (2023)
+    \item IEEE International RF and Microwave Conference, RFM (2018, 2020, 2022)
+    \item IEEE International Microwave Biomedical Conference, IMBioC (2022)
+    \item Applied Computational Electromagnetics Society Symposium, ACES (2019)
+    \item Asia Pacific Microwave Conference, APMC (2017)
+    % \item 2018 World of Multidisciplinary Research and Application Conference
+    % \item 2018 Advanced Research in Eng. and Info. Technology International Conference
+    % \item 2018 Symposium on Islamic Sciences and Technology
+    % \item 2018 World Congress on Circuits and Systems Conference
+\end{cvbullets}
+
+\cvsubsection{Journal Reviewing}
+
 \begin{cvparagraph}
-    \textbullet~2023 SPIE Defense+Commercial Sensing, Radar Sensor Technology
-    \textbullet~2022, 2020, 2018 IEEE International RF and Microwave Conference (RFM)
-    \textbullet~2022 IEEE International Microwave Biomedical Conference (IMBioC)
-    \textbullet~2019 Applied Computational Electromagnetics Society (ACES) Symposium
-    \textbullet~2017 Asia Pacific Microwave Conference (APMC)
-    % \textbullet~2018 World of Multidisciplinary Research and Application Conference
-    % \textbullet~2018 Advanced Research in Eng. and Info. Technology International Conference
-    % \textbullet~2018 Symposium on Islamic Sciences and Technology
-    % \textbullet~2018 World Congress on Circuits and Systems Conference
+    \cvReviews{} reviews across \cvReviewJournals{} journals, plus conference review for APMC, RFM and the ACES Symposium. Reviews per journal:
 \end{cvparagraph}
 
-\cvsubsection{Journal Reviewer}
-
-\begin{cvparagraph}
-    180+ reviews across 35 journals, plus conference review for APMC, RFM and the ACES Symposium. Most frequent venues: \emph{IEEE Access}, \emph{IEEE Trans.\ Instrumentation and Measurement}, \emph{IEEE Trans.\ Microwave Theory and Techniques}, and \emph{Sensors}.
-\end{cvparagraph}
-
-\begin{cvlist}
-    \textbullet~IEEE Transactions on Microwave Theory and Techniques\par
-    \textbullet~IEEE Transactions on Instrumentation and Measurement\par
-    \textbullet~IEEE Transactions on Circuits and Systems I: Regular Papers\par
-    \textbullet~IEEE Transactions on Circuits and Systems II: Express Briefs\par
-    \textbullet~IEEE Transactions on Biomedical Engineering\par
-    \textbullet~IEEE Transactions on Mobile Computing\par
-    \textbullet~IEEE Transactions on Vehicular Technology\par
-    \textbullet~IEEE/ASME Transactions on Mechatronics\par
-    \textbullet~IEEE Journal of Electromagnetics, RF, and Microwaves in Medicine and Biology\par
-    \textbullet~IEEE Journal on Emerging and Selected Topics in Circuits and Systems\par
-    \textbullet~IEEE Antennas and Wireless Propagation Letters\par
-    \textbullet~IEEE Microwave and Wireless Components Letters\par
-    \textbullet~IEEE Microwave Magazine\par
-    \textbullet~IEEE Sensors Journal\par
-    \textbullet~IEEE Sensors Letters\par
-    \textbullet~IEEE Access\par
-    \textbullet~Scientific Reports\par
-    \textbullet~Remote Sensing\par
-    \textbullet~Sensors\par
-    \textbullet~Sensors and Actuators A: Physical\par
-    \textbullet~Electronics\par
-    \textbullet~Applied Sciences\par
-    \textbullet~Algorithms\par
-    \textbullet~Symmetry\par
-    \textbullet~Information\par
-    \textbullet~Computers in Biology and Medicine\par
-    \textbullet~Engineering Applications of Artificial Intelligence\par
-    \textbullet~Expert Systems With Applications\par
-    \textbullet~Wind Energy\par
-    \textbullet~International Journal of Microwave and Wireless Technologies\par
-    \textbullet~AE\"{U} -- International Journal of Electronics and Communications\par
-    \textbullet~IETE Journal of Research\par
-    \textbullet~Mathematical and Computational Applications\par
-    \textbullet~Advances in Science, Technology and Engineering Systems Journal\par
-    \textbullet~ACES Journal\par
+\begin{cvlist}[2]
+    \item IEEE Access~\cvcount{23}
+    \item IEEE Trans.\ Instrumentation and Measurement~\cvcount{16}
+    \item IEEE Trans.\ Microwave Theory and Techniques~\cvcount{15}
+    \item Sensors~\cvcount{15}
+    \item IEEE J.\ Electromagnetics, RF and Microwaves in Medicine and Biology~\cvcount{13}
+    \item Electronics~\cvcount{11}
+    \item IEEE Trans.\ Circuits and Systems I: Regular Papers~\cvcount{10}
+    \item IEEE Sensors Journal~\cvcount{9}
+    \item IEEE J.\ Emerging and Selected Topics in Circuits and Systems~\cvcount{9}
+    \item IEEE Trans.\ Circuits and Systems II: Express Briefs~\cvcount{6}
+    \item Remote Sensing~\cvcount{6}
+    \item IEEE Trans.\ Biomedical Engineering~\cvcount{4}
+    \item IEEE Antennas and Wireless Propagation Letters~\cvcount{4}
+    \item IEEE Microwave and Wireless Components Letters~\cvcount{4}
+    \item Sensors and Actuators A: Physical~\cvcount{3}
+    \item Algorithms~\cvcount{3}
+    \item Expert Systems With Applications~\cvcount{3}
+    \item Scientific Reports~\cvcount{2}
+    \item IEEE/ASME Trans.\ Mechatronics~\cvcount{2}
+    \item IEEE Trans.\ Mobile Computing~\cvcount{2}
+    \item IEEE Trans.\ Vehicular Technology~\cvcount{2}
+    \item IEEE Microwave Magazine~\cvcount{2}
+    \item Engineering Applications of Artificial Intelligence~\cvcount{2}
+    \item AE\"{U} -- Int.\ J.\ of Electronics and Communications~\cvcount{2}
+    \item Wind Energy~\cvcount{2}
+    \item Advances in Science, Technology and Engineering Systems~\cvcount{2}
+    \item IEEE Sensors Letters~\cvcount{1}
+    \item Int.\ J.\ of Microwave and Wireless Technologies~\cvcount{1}
+    \item IETE Journal of Research~\cvcount{1}
+    \item Applied Sciences~\cvcount{1}
+    \item Symmetry~\cvcount{1}
+    \item Information~\cvcount{1}
+    \item Mathematical and Computational Applications~\cvcount{1}
+    \item Computers in Biology and Medicine~\cvcount{1}
+    \item ACES Journal~\cvcount{1}
 \end{cvlist}

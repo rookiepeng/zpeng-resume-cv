@@ -1,15 +1,20 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
 %
-% Résumé — the condensed version.
-% Shares its design with zpeng_cv.tex via zpeng_style.tex. Content that differs
-% from the CV lives in résumé-only files (summary_resume, experience_resume,
-% highlights); everything else is shared under cv/.
+% Resume -- the condensed version.
+% Shares its design with zpeng_cv.tex via zpeng_style.tex, its numbers via
+% cv/facts.tex, and its bibliography via the same four .bib files. Content that
+% differs from the CV lives in resume-only files (summary_resume, highlights,
+% selected); everything else is shared under cv/.
 
 \documentclass[11pt, letterpaper]{awesome-cv}
 
-\fontdir[fonts/]
 \input{zpeng_style.tex}
+\input{cv/facts.tex}
+
+\addbibresource{cv/books.bib}
+\addbibresource{cv/journals.bib}
+\addbibresource{cv/patents.bib}
 
 %-------------------------------------------------------------------------------
 %	PERSONAL INFORMATION
@@ -28,6 +33,13 @@
 \github{rookiepeng}
 \linkedin{zhengyup}
 
+\makecvmetadata
+    {R\'esum\'e}
+    {Senior Radar Systems Engineer, Ph.D.}
+    {radar systems engineering, automotive radar, 4D imaging radar, MIMO radar,
+     FMCW radar, mm-wave, beamforming, antenna arrays, radar signal processing,
+     interference mitigation, interior sensing radar}
+
 %-------------------------------------------------------------------------------
 \begin{document}
 
@@ -35,25 +47,24 @@
 
 \makecvfooter
     {\today}
-    {Zhengyu~Peng{\enskip\cdotp\enskip}Résumé}
+    {Zhengyu~Peng{\enskip\cdotp\enskip}R\'esum\'e}
     {\thepage/\pageref{LastPage}}
 
 %-------------------------------------------------------------------------------
 %	CONTENT
 %
-% Experience is Aptiv + MERL only; the editorial appointments are one line in
-% the Service row of highlights.tex. Highlights leads with Open Source.
+% Experience is Aptiv + MERL; the editorial appointments are one line in the
+% Service row of highlights.tex. Highlights leads with Open Source. Selected
+% Publications & Patents closes the document with the work itself.
 %-------------------------------------------------------------------------------
 \input{cv/summary_resume.tex}
-\input{cv/experience_resume.tex}
+\input{cv/experience.tex}
 \input{cv/highlights.tex}
 \input{cv/skills.tex}
 \input{cv/education.tex}
+\input{cv/selected.tex}
 
-% Pointer to the full record, on the content axis.
-\begin{cvparagraph}
-    {\fontsize{9pt}{1.3em}\bodyfontlight\color{lighttext} Full academic record---publications, patents, projects, service---in the CV at \cvurl{https://zpeng.me}{zpeng.me}.}
-\end{cvparagraph}
+\cvendnote{Complete record---all \cvJournals{} journal articles, \cvConfPapers{} conference papers, \cvPatents{} patents, projects and service---in the CV at \cvurl{https://zpeng.me}{zpeng.me}.}
 
 %-------------------------------------------------------------------------------
 \end{document}

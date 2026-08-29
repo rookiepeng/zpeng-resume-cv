@@ -1,0 +1,35 @@
+%-------------------------------------------------------------------------------
+% THE NUMBERS
+%
+% Every count and metric that appears in more than one place. The publication
+% totals, the patent count, the citation metrics and the review totals each used
+% to be typed out in three or four files -- summary_cv, summary_resume,
+% highlights, publications, activities -- so updating one meant grepping for the
+% old value and hoping. They are defined once here instead, and both documents
+% input this file.
+%
+% The publication counts are checked against the .bib files by the build (see
+% .github/workflows/build-pdf.yml), so a number edited here without a matching
+% bibliography entry fails CI rather than shipping quietly.
+%-------------------------------------------------------------------------------
+
+% Publication record. Must match the number of keys \nocite'd in
+% cv/publications.tex from the corresponding .bib file.
+\newcommand{\cvBooks}{1}
+\newcommand{\cvChapters}{3}
+\newcommand{\cvJournals}{16}
+\newcommand{\cvConfPapers}{32}
+\newcommand{\cvPatents}{10}
+
+% Citation metrics, and the date they were read off Google Scholar. Update the
+% date whenever the numbers change -- an undated metric is worth little.
+\newcommand{\cvCitations}{2,300+}
+\newcommand{\cvHIndex}{24}
+\newcommand{\cvITenIndex}{37}
+\newcommand{\cvScholarAsOf}{Aug. 2026}
+\newcommand{\cvScholarURL}{https://scholar.google.com/citations?user=0vQPboMAAAAJ}
+
+% Peer-review service. The per-journal breakdown behind these totals is the
+% list in cv/activities.tex; the totals are its column sums.
+\newcommand{\cvReviews}{180+}
+\newcommand{\cvReviewJournals}{35}

@@ -1,0 +1,22 @@
+% Resume only. The CV prints the full record from the same .bib files
+% (cv/publications.tex).
+%
+% This section exists because the resume's second page was two thirds empty and
+% ended on a pointer to somewhere else. A hiring manager reading a Ph.D.'s
+% resume wants to see the actual work, not only its cardinality -- and citing
+% the same .bib entries the CV prints means the two documents can never
+% disagree about a title, a venue or a patent number.
+%
+% Selection: the edited book, the flagship MIMO radar paper, the two most-cited
+% reviews, and the three patents named in the Experience bullets. Seven items,
+% which is what fits above the closing note without spilling onto a third page
+% -- add one and check the page count before pushing.
+
+\cvsection{Selected Publications \& Patents}
+
+\begin{refsection}
+    \nocite{Radar2022}
+    \nocite{TMTT2018MIMO, Sensors2019, TMTT2017review}
+    \nocite{SLOWTIME2024, FREQUENCY2022, OBJECT2021}
+    {\color{text}\printbibliography[heading=none]}
+\end{refsection}

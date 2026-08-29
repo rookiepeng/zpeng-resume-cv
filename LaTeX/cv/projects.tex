@@ -1,116 +1,160 @@
 % CV only.
 %
-% Two changes from the original:
-%   1. Internal program codenames (FLR7HD, FLR4+, ISR) meant nothing to a
-%      reader outside Aptiv. The rail now leads with what the thing IS and
-%      keeps the codename in parentheses.
-%   2. Doctoral-research dates moved out of the end of each description and
-%      into the label, so the rail stays scannable by time like every other
-%      section of the document.
-%   3. The 24-GHz radar-on-chip (2013--2014, with yearONE LLC) sat under
-%      "Doctoral Research at Texas Tech University", but it predates the Aug.
-%      2014 start at Texas Tech. It now heads "Earlier Research and Hardware
-%      Development" along with the M.Sc. thesis array, the Ku-band horn array
-%      and the RF synthesizer.
+% Laid out with \cventry rather than as a labelled list. The list form put the
+% project name in the rail, which forced the rail to 4.15 cm for this section
+% alone: project descriptions started 1.1 cm to the right of every other block
+% in the document, the names still wrapped to three lines, and the year sat
+% under the name in bold instead of in the timeline with every other date.
+% Name in the content column, year in the rail, and Projects reads on the same
+% axis and the same rhythm as Experience, Education and Honors.
+%
+% Where a program has an internal codename it goes in the organization slot,
+% because "FLR7HD" means nothing to a reader outside Aptiv and the name of the
+% thing does.
 
 \cvsection{Projects}
 
 \cvsubsection{Automotive Radar Programs at Aptiv}
 
-\begin{cvskills}[4.15cm]
+\begin{cventries}
 
-    \cvskill
-        {High-Resolution Imaging Radar\\{\small (FLR7HD)}}
-        {Next-generation high-resolution 4D imaging radar: waveform design, MIMO array architecture, and end-to-end system performance.}
+    \cventry
+        {High-Resolution Imaging Radar}
+        {FLR7HD}
+        {}
+        {}
+        {{\cvdescfont Next-generation high-resolution 4D imaging radar: waveform design, MIMO array architecture, and end-to-end system performance.}}
 
-    \cvskill
-        {Production 4D Imaging Radar\\{\small (FLR4+)}}
-        {Aptiv's first 4D imaging radar in production for active safety and autonomous driving.}
+    \cventry
+        {Production 4D Imaging Radar}
+        {FLR4+}
+        {}
+        {}
+        {{\cvdescfont Aptiv's first 4D imaging radar in production for active safety and autonomous driving.}}
 
-    \cvskill
-        {Interior Sensing Radar\\{\small (ISR)}}
-        {In-cabin radar detecting a small child left inside a vehicle; signal processing and detection chain.}
+    \cventry
+        {Interior Sensing Radar}
+        {ISR}
+        {}
+        {}
+        {{\cvdescfont In-cabin radar detecting a small child left inside a vehicle; signal processing and detection chain.}}
 
-\end{cvskills}
+\end{cventries}
 
 \cvsubsection{Open-Source Tools}
 
-\begin{cvparagraph}
-    Source and releases at \cvurl{https://github.com/rookiepeng}{github.com/rookiepeng}.
-\end{cvparagraph}
+\cvnote{Source and releases for all of these at \cvurl{https://github.com/rookiepeng}{github.com/rookiepeng}.}
 
-\begin{cvskills}[4.15cm]
+\begin{cventries}
 
-    \cvskill
+    \cventry
         {RadarSimX}
-        {A radar simulation toolchain built with Python and C++, with GPU acceleration for large scenes. \cvurl{https://radarsimx.com/}{radarsimx.com}}
+        {\cvurl{https://radarsimx.com/}{radarsimx.com}}
+        {}
+        {}
+        {{\cvdescfont A radar simulation toolchain built with Python and C++, with GPU acceleration for large scenes.}}
 
-    \cvskill
+    \cventry
         {SensorView}
-        {A sensor data visualization and analysis tool built for radar and RF engineers.}
+        {}
+        {}
+        {}
+        {{\cvdescfont A sensor data visualization and analysis tool built for radar and RF engineers.}}
 
-    \cvskill
+    \cventry
         {Antenna Array Analysis}
-        {A GUI tool for antenna array analysis with pattern visualization and simulation.}
+        {}
+        {}
+        {}
+        {{\cvdescfont A GUI tool for antenna array analysis with pattern visualization and simulation.}}
 
-    \cvskill
+    \cventry
         {CommProbe}
-        {A multi-protocol communication testing tool (TCP, UDP, Bluetooth, CAN, GPIB) in Python and PySide6.}
+        {}
+        {}
+        {}
+        {{\cvdescfont A multi-protocol communication testing tool (TCP, UDP, Bluetooth, CAN, GPIB) in Python and PySide6.}}
 
-    \cvskill
+    \cventry
         {Tx-Line Calculator}
-        {An Android app computing transmission-line parameters for microstrip, stripline, coplanar waveguide, and coaxial lines.}
+        {}
+        {}
+        {}
+        {{\cvdescfont An Android app computing transmission-line parameters for microstrip, stripline, coplanar waveguide, and coaxial lines.}}
 
-    \cvskill
+    \cventry
         {Hexapod}
-        {A 3D-printed hexapod robot on ESP32 and Arduino, with WiFi remote control and OTA firmware updates. \cvurl{https://github.com/rookidroid/hexapod}{github.com/rookidroid/hexapod}}
+        {\cvurl{https://github.com/rookidroid/hexapod}{github.com/rookidroid/hexapod}}
+        {}
+        {}
+        {{\cvdescfont A 3D-printed hexapod robot on ESP32 and Arduino, with WiFi remote control and OTA firmware updates.}}
 
-    \cvskill
-        {Smarty}
-        {An autonomous mini robot on ESP32 with a paired joystick remote, built as an introduction to engineering for children.}
-
-\end{cvskills}
+\end{cventries}
 
 \cvsubsection{Doctoral Research at Texas Tech University}
 
-\begin{cvskills}[4.15cm]
+\begin{cventries}
 
-    \cvskill
-        {3D MIMO Radar\\{\small 2017}}
-        {A portable K-band MIMO FMCW radar with a non-uniformly spaced 16-Tx / 16-Rx array, achieving a 90\textdegree{} field of view and $\pm$1.5\textdegree{} angular resolution in both azimuth and elevation for 3D localization mapping.}
+    \cventry
+        {3D MIMO Radar}
+        {}
+        {}
+        {2017}
+        {{\cvdescfont A portable K-band MIMO FMCW radar with a non-uniformly spaced 16-Tx / 16-Rx array, achieving a 90\textdegree{} field of view and $\pm$1.5\textdegree{} angular resolution in both azimuth and elevation for 3D localization mapping.}}
 
-    \cvskill
-        {RF Beamforming Radar\\{\small 2017}}
-        {The first PCB realization of a short-range localization radar with 2D K-band beamforming, achieving $\pm$45\textdegree{} continuous beam steering using PIN-diode vector controllers, at 11.5\,$\times$\,3.9\,cm and 69\,g.}
+    \cventry
+        {RF Beamforming Radar}
+        {}
+        {}
+        {2017}
+        {{\cvdescfont The first PCB realization of a short-range localization radar with 2D K-band beamforming, achieving $\pm$45\textdegree{} continuous beam steering using PIN-diode vector controllers, at 11.5\,$\times$\,3.9\,cm and 69\,g.}}
 
-    \cvskill
-        {K-Band Multi-Mode Radar\\{\small 2015--2017}}
-        {A 24-GHz portable radar configurable as FMCW or interferometry, supporting localization, range-Doppler imaging, non-contact speech sensing, wind turbine health monitoring, and UAV-borne SAR imaging.}
+    \cventry
+        {K-Band Multi-Mode Radar}
+        {}
+        {}
+        {2015--2017}
+        {{\cvdescfont A 24-GHz portable radar configurable as FMCW or interferometry, supporting localization, range-Doppler imaging, non-contact speech sensing, wind turbine health monitoring, and UAV-borne SAR imaging.}}
 
-    \cvskill
-        {C-Band Multi-Mode Radar\\{\small 2015--2017}}
-        {A 5.8-GHz FMCW-interferometry radar for single and multiple target tracking, vital sign detection, fall detection, range-Doppler imaging, and wind turbine structural health monitoring.}
+    \cventry
+        {C-Band Multi-Mode Radar}
+        {}
+        {}
+        {2015--2017}
+        {{\cvdescfont A 5.8-GHz FMCW-interferometry radar for single and multiple target tracking, vital sign detection, fall detection, range-Doppler imaging, and wind turbine structural health monitoring.}}
 
-\end{cvskills}
+\end{cventries}
 
 \cvsubsection{Earlier Research and Hardware Development}
 
-\begin{cvskills}[4.15cm]
+\begin{cventries}
 
-    \cvskill
-        {24-GHz Radar-on-Chip\\{\small 2013--2014}}
-        {A 24-GHz radar transceiver in GlobalFoundries 0.13\,\textmu m CMOS on a 2\,$\times$\,2\,mm die, in collaboration with yearONE LLC. Led the transmitter: LC-tank VCO, poly-phase filter, RF buffers, and QFN-package matching network.}
+    \cventry
+        {24-GHz Radar-on-Chip}
+        {with yearONE LLC}
+        {}
+        {2013--2014}
+        {{\cvdescfont A 24-GHz radar transceiver in GlobalFoundries 0.13\,\textmu m CMOS on a 2\,$\times$\,2\,mm die. Led the transmitter: LC-tank VCO, poly-phase filter, RF buffers, and QFN-package matching network.}}
 
-    \cvskill
-        {Adaptive Beamforming Array\\{\small M.Sc.\ thesis}}
-        {A five-element half-wavelength monopole array steered by a complex-domain RF front end, applying beamforming with vector RF multipliers in the RF domain rather than at baseband, so no high-speed digital back end is needed. Basis of the complex-domain beamforming patent and two journal articles.}
+    \cventry
+        {Adaptive Beamforming Array}
+        {M.Sc.\ thesis}
+        {}
+        {2011--2014}
+        {{\cvdescfont A five-element half-wavelength monopole array steered by a complex-domain RF front end, applying beamforming with vector RF multipliers in the RF domain rather than at baseband, so no high-speed digital back end is needed. Basis of the complex-domain beamforming patent and two journal articles.}}
 
-    \cvskill
+    \cventry
         {Ku-Band Horn Antenna Array}
-        {A 16\,$\times$\,4 quadrature-polarized horn array for satellite communications at 12.5 and 14.25\,GHz, 500\,MHz bandwidth per band; array and feed network designed in CST Microwave Studio.}
+        {}
+        {}
+        {}
+        {{\cvdescfont A 16\,$\times$\,4 quadrature-polarized horn array for satellite communications at 12.5 and 14.25\,GHz, 500\,MHz bandwidth per band; array and feed network designed in CST Microwave Studio.}}
 
-    \cvskill
+    \cventry
         {Wideband RF Signal Synthesizer}
-        {A benchtop RF source spanning 150\,kHz--3\,GHz at 0.1\,Hz resolution and $-$130 to $+$20\,dBm output, with $-$93\,dBc/Hz phase noise at 10\,kHz offset from 2.2\,GHz. Synthesizer, filter bank, modulator and power management on one board, with Atmega88PA firmware in C, Xilinx CPLD logic in Verilog, and a C\# control application.}
+        {}
+        {}
+        {}
+        {{\cvdescfont A benchtop RF source spanning 150\,kHz--3\,GHz at 0.1\,Hz resolution and $-$130 to $+$20\,dBm output, with $-$93\,dBc/Hz phase noise at 10\,kHz offset from 2.2\,GHz. Synthesizer, filter bank, modulator and power management on one board, with Atmega88PA firmware in C, Xilinx CPLD logic in Verilog, and a C\# control application.}}
 
-\end{cvskills}
+\end{cventries}
