@@ -1,3 +1,18 @@
+% CV only.
+%
+% Two changes from the original:
+%   1. Internal program codenames (FLR7HD, FLR4+, ISR) meant nothing to a
+%      reader outside Aptiv. The rail now leads with what the thing IS and
+%      keeps the codename in parentheses.
+%   2. Doctoral-research dates moved out of the end of each description and
+%      into the label, so the rail stays scannable by time like every other
+%      section of the document.
+%   3. The 24-GHz radar-on-chip (2013--2014, with yearONE LLC) sat under
+%      "Doctoral Research at Texas Tech University", but it predates the Aug.
+%      2014 start at Texas Tech. It now heads "Earlier Research and Hardware
+%      Development" along with the M.Sc. thesis array, the Ku-band horn array
+%      and the RF synthesizer.
+
 \cvsection{Projects}
 
 \cvsubsection{Automotive Radar Programs at Aptiv}
@@ -5,16 +20,16 @@
 \begin{cvskills}[4.15cm]
 
     \cvskill
-        {FLR7HD}
-        {Next-generation high-resolution 4D imaging radar.}
+        {High-Resolution Imaging Radar\\{\small (FLR7HD)}}
+        {Next-generation high-resolution 4D imaging radar: waveform design, MIMO array architecture, and end-to-end system performance.}
 
     \cvskill
-        {FLR4+}
+        {Production 4D Imaging Radar\\{\small (FLR4+)}}
         {Aptiv's first 4D imaging radar in production for active safety and autonomous driving.}
 
     \cvskill
-        {ISR}
-        {Interior sensing radar detecting a small child left inside a vehicle.}
+        {Interior Sensing Radar\\{\small (ISR)}}
+        {In-cabin radar detecting a small child left inside a vehicle; signal processing and detection chain.}
 
 \end{cvskills}
 
@@ -50,6 +65,10 @@
         {Hexapod}
         {A 3D-printed hexapod robot on ESP32 and Arduino, with WiFi remote control and OTA firmware updates. \cvurl{https://github.com/rookidroid/hexapod}{github.com/rookidroid/hexapod}}
 
+    \cvskill
+        {Smarty}
+        {An autonomous mini robot on ESP32 with a paired joystick remote, built as an introduction to engineering for children.}
+
 \end{cvskills}
 
 \cvsubsection{Doctoral Research at Texas Tech University}
@@ -57,23 +76,41 @@
 \begin{cvskills}[4.15cm]
 
     \cvskill
-        {3D MIMO Radar}
-        {A portable K-band MIMO FMCW radar with a non-uniformly spaced 16-Tx / 16-Rx array, achieving a 90\textdegree{} field of view and $\pm$1.5\textdegree{} angular resolution in both azimuth and elevation for 3D localization mapping. (2017)}
+        {3D MIMO Radar\\{\small 2017}}
+        {A portable K-band MIMO FMCW radar with a non-uniformly spaced 16-Tx / 16-Rx array, achieving a 90\textdegree{} field of view and $\pm$1.5\textdegree{} angular resolution in both azimuth and elevation for 3D localization mapping.}
 
     \cvskill
-        {RF Beamforming Radar}
-        {The first PCB realization of a short-range localization radar with 2D K-band beamforming, achieving $\pm$45\textdegree{} continuous beam steering using PIN-diode vector controllers, at 11.5\,$\times$\,3.9\,cm and 69\,g. (2017)}
+        {RF Beamforming Radar\\{\small 2017}}
+        {The first PCB realization of a short-range localization radar with 2D K-band beamforming, achieving $\pm$45\textdegree{} continuous beam steering using PIN-diode vector controllers, at 11.5\,$\times$\,3.9\,cm and 69\,g.}
 
     \cvskill
-        {K-Band Multi-Mode Radar}
-        {A 24-GHz portable radar configurable as FMCW or interferometry, supporting localization, range-Doppler imaging, non-contact speech sensing, wind turbine health monitoring, and UAV-borne SAR imaging. (2015--2017)}
+        {K-Band Multi-Mode Radar\\{\small 2015--2017}}
+        {A 24-GHz portable radar configurable as FMCW or interferometry, supporting localization, range-Doppler imaging, non-contact speech sensing, wind turbine health monitoring, and UAV-borne SAR imaging.}
 
     \cvskill
-        {C-Band Multi-Mode Radar}
-        {A 5.8-GHz FMCW-interferometry radar for single and multiple target tracking, vital sign detection, fall detection, range-Doppler imaging, and wind turbine structural health monitoring. (2015--2017)}
+        {C-Band Multi-Mode Radar\\{\small 2015--2017}}
+        {A 5.8-GHz FMCW-interferometry radar for single and multiple target tracking, vital sign detection, fall detection, range-Doppler imaging, and wind turbine structural health monitoring.}
+
+\end{cvskills}
+
+\cvsubsection{Earlier Research and Hardware Development}
+
+\begin{cvskills}[4.15cm]
 
     \cvskill
-        {24-GHz Radar-on-Chip}
-        {A 24-GHz radar transceiver in GlobalFoundries 0.13\,\textmu m CMOS, including LC-tank VCO, poly-phase filter, RF buffers, and QFN-package matching network. (2013--2014)}
+        {24-GHz Radar-on-Chip\\{\small 2013--2014}}
+        {A 24-GHz radar transceiver in GlobalFoundries 0.13\,\textmu m CMOS on a 2\,$\times$\,2\,mm die, in collaboration with yearONE LLC. Led the transmitter: LC-tank VCO, poly-phase filter, RF buffers, and QFN-package matching network.}
+
+    \cvskill
+        {Adaptive Beamforming Array\\{\small M.Sc.\ thesis}}
+        {A five-element half-wavelength monopole array steered by a complex-domain RF front end, applying beamforming with vector RF multipliers in the RF domain rather than at baseband, so no high-speed digital back end is needed. Basis of the complex-domain beamforming patent and two journal articles.}
+
+    \cvskill
+        {Ku-Band Horn Antenna Array}
+        {A 16\,$\times$\,4 quadrature-polarized horn array for satellite communications at 12.5 and 14.25\,GHz, 500\,MHz bandwidth per band; array and feed network designed in CST Microwave Studio.}
+
+    \cvskill
+        {Wideband RF Signal Synthesizer}
+        {A benchtop RF source spanning 150\,kHz--3\,GHz at 0.1\,Hz resolution and $-$130 to $+$20\,dBm output, with $-$93\,dBc/Hz phase noise at 10\,kHz offset from 2.2\,GHz. Synthesizer, filter bank, modulator and power management on one board, with Atmega88PA firmware in C, Xilinx CPLD logic in Verilog, and a C\# control application.}
 
 \end{cvskills}

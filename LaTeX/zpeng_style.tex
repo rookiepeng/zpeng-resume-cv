@@ -19,6 +19,7 @@
 \usepackage{needspace}
 \usepackage{calc}
 \usepackage{changepage}
+\usepackage{multicol}
 
 \RequirePackage[backend=biber,style=ieee,sorting=none]{biblatex}
 
@@ -127,9 +128,14 @@
 % content silently loses its indent. Adding a \strut to guard against that
 % shifts the rail's first baseline off the content's, so callers pass a label.
 %-------------------------------------------------------------------------------
+% Rail alignment. Dates stay flush right: near-uniform digit widths hide the
+% ragged edge, and the column reads as a timeline. Word labels do not, so the
+% labelled lists set this to \raggedright for the length of one row.
+\newcommand{\cvrailalign}{\raggedleft}
+
 \long\def\cvrailline#1#2#3{%
   \noindent
-  \begin{minipage}[t]{#1}\raggedleft #2\end{minipage}%
+  \begin{minipage}[t]{#1}\cvrailalign #2\end{minipage}%
   \hspace{\cvrailgap}%
   \begin{minipage}[t]{\cvbodywidth{#1}}\raggedright #3\end{minipage}%
   \par
@@ -213,9 +219,15 @@
   \par
 }
 
+% The label column here holds words, not dates. "Radar \& RF" against "Signal
+% Processing" makes a ragged left edge the loudest thing in the section, so
+% these labels go flush left, on the same axis as the section headings above.
 \renewcommand*{\cvskill}[2]{%
   \needspace{2\baselineskip}%
+  \begingroup
+  \renewcommand{\cvrailalign}{\raggedright}%
   \cvrailline{\cvskilllabelwidth}{\skilltypestyle{#1}}{\skillsetstyle{#2}}%
+  \endgroup
   \addvspace{0.9mm}%
 }
 
@@ -290,3 +302,27 @@
 
 % An accent-colored hyperlink, for the few places a URL is worth showing.
 \newcommand{\cvurl}[2]{\href{#1}{\textcolor{awesome}{#2}}}
+
+%-------------------------------------------------------------------------------
+% MULTI-COLUMN LISTS
+%
+% For long enumerations of short items (the CV's journal-reviewer list), on the
+% content axis like every other block. Real columns, so they break across pages
+% properly. Optional argument is the column count; 2 by default.
+%
+%   \begin{cvlist}      \textbullet~Item\par  ...  \end{cvlist}
+%   \begin{cvlist}[3]   ...                        \end{cvlist}
+%-------------------------------------------------------------------------------
+\setlength{\columnsep}{0.7cm}
+
+\newenvironment{cvlist}[1][2]{%
+  \par\addvspace{\acvSectionContentTopSkip}%
+  \begin{adjustwidth}{\cvrailwidth+\cvrailgap}{0pt}%
+  \paragraphstyle
+  \begin{multicols}{#1}%
+  \raggedcolumns\raggedright
+}{%
+  \end{multicols}%
+  \end{adjustwidth}%
+  \addvspace{1.2mm}%
+}

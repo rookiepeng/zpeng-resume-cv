@@ -16,22 +16,32 @@ LaTeX/
 ├── zpeng_cv.tex        # CV driver — identity + which sections to include
 ├── awesome-cv.cls      # upstream Awesome-CV class (unmodified)
 └── cv/
-    ├── summary.tex       # sections shared by both documents
-    ├── experience.tex
-    ├── education.tex
-    ├── skills.tex
-    ├── honors.tex
-    ├── highlights.tex    # résumé only
-    ├── projects.tex      # CV only
-    ├── activities.tex    # CV only
-    ├── publications.tex  # CV only
+    ├── education.tex          # shared by both documents
+    ├── skills.tex             # shared
+    ├── summary_resume.tex     # résumé only
+    ├── experience_resume.tex  # résumé only
+    ├── highlights.tex         # résumé only
+    ├── summary_cv.tex         # CV only
+    ├── experience.tex         # CV only
+    ├── projects.tex           # CV only
+    ├── honors.tex             # CV only
+    ├── activities.tex         # CV only
+    ├── publications.tex       # CV only
+    ├── activities_back.tex    # not compiled — per-journal review counts,
+    │                          #   the source for the totals in activities.tex
     └── books.bib, journals.bib, proceedings.bib, patents.bib
 ```
 
-Content lives in `cv/` and is shared by both documents, so an edit to
-`cv/experience.tex` updates the résumé and the CV together. `highlights.tex` is
-the one résumé-only block: a condensed view of the publications, patents,
-service and open-source work that the CV lists in full.
+Only `education.tex` and `skills.tex` are shared; everything else is written
+for one document or the other. The two diverge because they answer different
+questions. The résumé is a two-page argument for a hire, so it carries Aptiv
+and MERL and folds publications, patents, service and awards into one
+`highlights.tex` block. The CV is the full record, so it keeps every editorial
+appointment as its own entry and lists the publications in full.
+
+That means a fact appearing in both documents — the patent count, the review
+totals, the citation metrics — lives in two files. When one changes, grep for
+the old number before assuming a single edit covered it.
 
 Anything visual — colors, font sizes, margins, spacing — belongs in
 `zpeng_style.tex`, not in the two driver files.

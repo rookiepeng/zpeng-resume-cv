@@ -1,22 +1,22 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
 %
-% Résumé — the two-page version.
-% Shares its design with zpeng_cv.tex via zpeng_style.tex, and shares every
-% content block with the CV via the files under cv/.
+% Résumé — the condensed version.
+% Shares its design with zpeng_cv.tex via zpeng_style.tex. Content that differs
+% from the CV lives in résumé-only files (summary_resume, experience_resume,
+% highlights); everything else is shared under cv/.
 
 \documentclass[11pt, letterpaper]{awesome-cv}
 
 \fontdir[fonts/]
 \input{zpeng_style.tex}
 
-\addbibresource{cv/books.bib}
-\addbibresource{cv/journals.bib}
-\addbibresource{cv/proceedings.bib}
-\addbibresource{cv/patents.bib}
-
 %-------------------------------------------------------------------------------
 %	PERSONAL INFORMATION
+%
+% Google Scholar is deliberately omitted here: Selected Highlights already links
+% the full publication list, and six header links crowd out the three anyone
+% actually clicks. The CV keeps it.
 %-------------------------------------------------------------------------------
 \name{Zhengyu}{Peng}
 \position{Senior Radar Systems Engineer{\enskip\cdotp\enskip}Ph.D.}
@@ -27,7 +27,6 @@
 \homepage{zpeng.me}
 \github{rookiepeng}
 \linkedin{zhengyup}
-\googlescholar{0vQPboMAAAAJ}{Z. Peng}
 
 %-------------------------------------------------------------------------------
 \begin{document}
@@ -41,12 +40,20 @@
 
 %-------------------------------------------------------------------------------
 %	CONTENT
+%
+% Experience is Aptiv + MERL only; the editorial appointments are one line in
+% the Service row of highlights.tex. Highlights leads with Open Source.
 %-------------------------------------------------------------------------------
-\input{cv/summary.tex}
-\input{cv/experience.tex}
+\input{cv/summary_resume.tex}
+\input{cv/experience_resume.tex}
 \input{cv/highlights.tex}
 \input{cv/skills.tex}
 \input{cv/education.tex}
+
+% Pointer to the full record, on the content axis.
+\begin{cvparagraph}
+    {\fontsize{9pt}{1.3em}\bodyfontlight\color{lighttext} Full academic record---publications, patents, projects, service---in the CV at \cvurl{https://zpeng.me}{zpeng.me}.}
+\end{cvparagraph}
 
 %-------------------------------------------------------------------------------
 \end{document}

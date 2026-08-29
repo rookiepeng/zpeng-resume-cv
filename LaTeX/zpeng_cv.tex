@@ -2,8 +2,7 @@
 %!TEX encoding = UTF-8 Unicode
 %
 % Curriculum Vitae — the full academic record.
-% Shares its design with zpeng_resume.tex via zpeng_style.tex, and shares every
-% content block with the résumé via the files under cv/.
+% Shares its design with zpeng_resume.tex via zpeng_style.tex.
 
 \documentclass[11pt, letterpaper]{awesome-cv}
 
@@ -41,12 +40,19 @@
 
 %-------------------------------------------------------------------------------
 %	CONTENT
+%
+% Order: credentials, then appointments, then the work itself, then the record.
+% Education leads (it is the CV convention and the shortest section); Skills
+% moves below Projects, because on a CV the projects demonstrate the skills and
+% a keyword list before them reads as a résumé habit. Publications stays last —
+% six pages of references belong at the back, as the appendix a reader turns to,
+% not the wall they must cross to reach Honors and Service.
 %-------------------------------------------------------------------------------
-\input{cv/summary.tex}
-\input{cv/experience.tex}
+\input{cv/summary_cv.tex}
 \input{cv/education.tex}
-\input{cv/skills.tex}
+\input{cv/experience.tex}
 \input{cv/projects.tex}
+\input{cv/skills.tex}
 \input{cv/honors.tex}
 \input{cv/activities.tex}
 \newpage
