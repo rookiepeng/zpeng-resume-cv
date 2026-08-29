@@ -197,11 +197,24 @@
 \newcounter{cvsectionid}
 
 \makeatletter
-% The heading sits above a hairline that spans the full measure. \needspace
-% keeps a heading from being stranded alone at the foot of a page, and
-% \pdfbookmark gives the ten-page CV a usable outline in a PDF reader.
+% The heading sits above a hairline that spans the full measure. \pdfbookmark
+% gives the nine-page CV a usable outline in a PDF reader.
+%
+% \Needspace, not \needspace. The lowercase one does not measure the space
+% left: it plants stretchable glue and a \penalty -100, which the page builder
+% weighs like any other breakpoint -- and because the glue lets the short page
+% be filled at badness 0, the negative penalty makes breaking there *cheaper*
+% than carrying on. It fired with a third of the page still empty. \Needspace
+% compares \pagegoal-\pagetotal against the request and issues \newpage only
+% if it really is short.
+%
+% The values have to cover the heading *and* enough of whatever follows it to be
+% worth the reader's page turn -- reserving room for the heading alone still
+% strands it, with its first entry starting the next page. An entry here runs to
+% a title, an organization line and two or three lines of description, so seven
+% baselines is the floor.
 \renewcommand{\cvsection}[1]{%
-  \needspace{5\baselineskip}%
+  \Needspace{7\baselineskip}%
   \par\addvspace{\acvSectionTopSkip}%
   \stepcounter{cvsectionid}%
   \phantomsection
@@ -212,7 +225,7 @@
 }
 
 \renewcommand{\cvsubsection}[1]{%
-  \needspace{4\baselineskip}%
+  \Needspace{7\baselineskip}%
   \par\addvspace{3.0mm}%
   \stepcounter{cvsectionid}%
   \phantomsection
@@ -236,7 +249,7 @@
 }
 
 \renewcommand*{\cventry}[5]{%
-  \needspace{3\baselineskip}%
+  \Needspace{3\baselineskip}%
   \par\addvspace{1.6mm}%
   \noindent\cvrail{\entrydatestyle{#4}}%
   \entrytitlestyle{#1}\par\vspace{0.5mm}%
@@ -276,7 +289,7 @@
 % Processing" makes a ragged left edge the loudest thing in the section, so
 % these labels go flush left, on the same axis as the section headings above.
 \renewcommand*{\cvskill}[2]{%
-  \needspace{2\baselineskip}%
+  \Needspace{2\baselineskip}%
   \par\addvspace{1.7mm}%
   \noindent
   \begingroup
@@ -300,7 +313,7 @@
 }
 
 \renewcommand*{\cvhonor}[4]{%
-  \needspace{2\baselineskip}%
+  \Needspace{2\baselineskip}%
   \par\addvspace{1.0mm}%
   \noindent\cvrail{\honordatestyle{#4}}%
   \honorpositionstyle{#1}%
