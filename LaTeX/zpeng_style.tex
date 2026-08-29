@@ -5,13 +5,14 @@
 % zpeng_resume.tex. Edit here, and both documents stay in sync.
 %
 % The design is built on one idea: a single left rail runs down every page.
-% Dates, skill categories, honor years and project names all sit in that rail,
-% and their content starts at the same x-position. That gives the document one
-% vertical rhythm instead of four different ones, and makes it scannable by
-% time (experience, education, honors) or by topic (skills, projects).
+% Dates, skill categories, honor years and project years all sit in that rail,
+% and their content starts at the same x-position -- in every section, on every
+% page. That gives the document one vertical rhythm instead of four different
+% ones, and makes it scannable by time (experience, education, honors, projects)
+% or by topic (skills, highlights).
 %
-% The rail width is the only number that matters; everything else derives
-% from it. Change \cvrailwidth and the whole document reflows coherently.
+% \cvrailwidth is the only number that matters; everything else derives from it.
+% Change it and the whole document reflows coherently.
 %-------------------------------------------------------------------------------
 
 \usepackage{lastpage}
@@ -23,6 +24,13 @@
 
 \RequirePackage[backend=biber,style=ieee,sorting=none]{biblatex}
 
+% Each publication type is printed from its own refsection so that each list
+% numbers from [1]. biblatex warns about the split bibliography that results;
+% it is the intended arrangement, so the warning is turned off rather than left
+% to bury a real one.
+\ExecuteBibliographyOptions{defernumbers=false}
+\BiblatexSplitbibDefernumbersWarningOff
+
 %-------------------------------------------------------------------------------
 % THE GRID
 %-------------------------------------------------------------------------------
@@ -32,15 +40,20 @@
 % like "Ph.D." and "Jun." trigger it constantly in this document.
 \frenchspacing
 
-\newlength{\cvrailwidth}    \setlength{\cvrailwidth}{3.0cm}
-\newlength{\cvrailgap}      \setlength{\cvrailgap}{0.45cm}
+\newlength{\cvrailwidth}    \setlength{\cvrailwidth}{3.05cm}
+\newlength{\cvrailgap}      \setlength{\cvrailgap}{0.5cm}
 
-% Width of the content column, given a rail of width #1.
-\newcommand{\cvbodywidth}[1]{\dimexpr\textwidth-#1-\cvrailgap\relax}
+% Where the content column starts, measured from the left margin.
+\newcommand{\cvbodyindent}{\dimexpr\cvrailwidth+\cvrailgap\relax}
 
 % Long unbreakable strings in bibliography entries (paper titles, URLs) can
 % otherwise push a line past the right margin.
 \setlength{\emergencystretch}{2.5em}
+
+% A line stranded at the top or foot of a page costs more than a slightly short
+% page does, in a document read by skimming.
+\widowpenalty=10000
+\clubpenalty=10000
 
 %-------------------------------------------------------------------------------
 % COLOR PALETTE
@@ -68,7 +81,7 @@
 %
 % IBM Plex Sans throughout: a technical family with real character at small
 % sizes. Dates use its tabular figures rather than a mono face, so digits line
-% up down the rail without the width a monospace date needs — which is what
+% up down the rail without the width a monospace date needs -- which is what
 % made every multi-month range wrap.
 % Falls back to the class defaults where Plex is not installed.
 %-------------------------------------------------------------------------------
@@ -87,15 +100,20 @@
 % Header
 \renewcommand*{\headerfirstnamestyle}[1]{{\fontsize{28pt}{1em}\headerfontlight\color{graytext} #1}}
 \renewcommand*{\headerlastnamestyle}[1]{{\fontsize{28pt}{1em}\headerfont\bfseries\color{accentdeep} #1}}
-\renewcommand*{\headerpositionstyle}[1]{{\fontsize{9.5pt}{1.3em}\bodyfont\scshape\color{awesome} #1}}
+\renewcommand*{\headerpositionstyle}[1]{{\fontsize{9.5pt}{1.3em}\bodyfont\color{awesome} #1}}
 \renewcommand*{\headeraddressstyle}[1]{{\fontsize{9pt}{1.3em}\bodyfontlight\color{lighttext} #1}}
 \renewcommand*{\headersocialstyle}[1]{{\fontsize{8.6pt}{1.3em}\bodyfontlight\color{graytext} #1}}
-\renewcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
+\renewcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\color{lighttext} #1}}
 
 % Sections. Uppercase headings need a little tracking to stay legible.
+%
+% No \scshape anywhere below: IBM Plex Sans has no small-caps shape, so every
+% \scshape the class ships was being substituted away silently -- the style
+% never rendered, and the substitution cost four font warnings per build.
+% Tracking, weight and tone carry the hierarchy instead.
 \newcommand*{\cvletterspace}{\addfontfeature{LetterSpace=7}}
 \renewcommand*{\sectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\bfseries\color{awesome}\cvletterspace #1}}
-\renewcommand*{\subsectionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\scshape\color{graytext}\cvletterspace #1}}
+\renewcommand*{\subsectionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\color{graytext}\cvletterspace #1}}
 \renewcommand*{\paragraphstyle}{\fontsize{9.8pt}{1.4em}\bodyfontlight\upshape\color{text}}
 
 % Entries: the role leads, the organization supports it, the date sits in the
@@ -118,40 +136,77 @@
 \renewcommand*{\skillsetstyle}[1]{{\fontsize{9.5pt}{1.32em}\bodyfontlight\color{text} #1}}
 
 %-------------------------------------------------------------------------------
-% THE RAIL PRIMITIVE
+% THE RAIL
 %
-% Everything below is built on this: a right-aligned rail box, a gutter, and a
-% content box. Both boxes are top-aligned so the rail label lines up with the
-% first line of its content rather than floating in the middle of it.
+% The content column is ordinary flowing text, indented to \cvbodyindent by the
+% surrounding block environment. The rail label is hung to its left with \llap,
+% which occupies no horizontal space in the paragraph -- so an entry is a normal
+% sequence of paragraphs and TeX may break a page in the middle of it.
 %
-% #2 must not be empty: an empty minipage collapses to zero width and the
-% content silently loses its indent. Adding a \strut to guard against that
-% shifts the rail's first baseline off the content's, so callers pass a label.
+% That is the whole point. The earlier implementation set each entry in a pair
+% of minipages, which made the entry an unbreakable box: a five-bullet job
+% shorter than the space left on the page was pushed whole onto the next one,
+% costing up to 40% of a page every time it happened.
+%
+% Rail labels are expected to fit on one line. A label that wraps degrades to a
+% slightly wider gap before the second line of its content (\parbox[t] carries
+% the overflow as depth) -- never to an overlap -- but it should be shortened or
+% \cvrailwidth widened instead.
 %-------------------------------------------------------------------------------
 % Rail alignment. Dates stay flush right: near-uniform digit widths hide the
 % ragged edge, and the column reads as a timeline. Word labels do not, so the
 % labelled lists set this to \raggedright for the length of one row.
 \newcommand{\cvrailalign}{\raggedleft}
 
-\long\def\cvrailline#1#2#3{%
-  \noindent
-  \begin{minipage}[t]{#1}\cvrailalign #2\end{minipage}%
-  \hspace{\cvrailgap}%
-  \begin{minipage}[t]{\cvbodywidth{#1}}\raggedright #3\end{minipage}%
-  \par
+% \leavevmode is load-bearing. The label box is a \vtop underneath, and a
+% \vtop takes its height from its first item only when that item is a box. Every
+% rail style starts with \color, which in vertical mode contributes a whatsit
+% first -- so the box gets height 0 and the label hangs one ascender, about 6pt
+% here, below the line it is supposed to label. \leavevmode opens the paragraph
+% before the color is set, which puts the whatsit inside the first line instead.
+%
+% The earlier implementation never showed this because it set the content in a
+% second [t] box: both sides were displaced by the same amount and so agreed
+% with each other. Against ordinary flowing text there is nothing to agree with,
+% and the offset becomes visible.
+\newcommand{\cvrail}[1]{%
+  \llap{%
+    \begin{minipage}[t]{\cvrailwidth}\leavevmode\cvrailalign #1\end{minipage}%
+    \hspace{\cvrailgap}%
+  }%
+}
+
+% Every block of content sits on the same axis. Built on a list rather than on
+% \leftskip so that page breaks and nested itemize both behave.
+% \parskip is set to half a baseline by the parskip package, which the class
+% loads. Inside an entry every \par is a deliberate line break -- title, then
+% organization, then bullets -- not a new paragraph, so that half-line has to go
+% or the three run apart. Blocks that really do hold prose (cvparagraph) put it
+% back for themselves.
+\newenvironment{cvbody}{%
+  \begin{adjustwidth}{\cvbodyindent}{0pt}%
+  \setlength{\parskip}{0pt}%
+  \raggedright
+}{%
+  \end{adjustwidth}%
 }
 
 %-------------------------------------------------------------------------------
 % SECTIONS
 %-------------------------------------------------------------------------------
+\newcounter{cvsectionid}
+
 \makeatletter
 % The heading sits above a hairline that spans the full measure. \needspace
-% keeps a heading from being stranded alone at the foot of a page.
+% keeps a heading from being stranded alone at the foot of a page, and
+% \pdfbookmark gives the ten-page CV a usable outline in a PDF reader.
 \renewcommand{\cvsection}[1]{%
   \needspace{5\baselineskip}%
   \par\addvspace{\acvSectionTopSkip}%
-  {\sectionstyle{\MakeUppercase{#1}}}%
+  \stepcounter{cvsectionid}%
   \phantomsection
+  \pdfbookmark[1]{#1}{cvsec.\thecvsectionid}%
+  {\sectionstyle{\MakeUppercase{#1}}}%
   \hspace{0.7em}\color{sectiondivider}\vhrulefill{1.1pt}%
   \par\addvspace{1.6mm}%
 }
@@ -159,34 +214,36 @@
 \renewcommand{\cvsubsection}[1]{%
   \needspace{4\baselineskip}%
   \par\addvspace{3.0mm}%
+  \stepcounter{cvsectionid}%
+  \phantomsection
+  \pdfbookmark[2]{#1}{cvsec.\thecvsectionid}%
   \noindent\subsectionstyle{#1}%
   \par\addvspace{1.0mm}%
 }
 \makeatother
 
 \renewcommand{\acvSectionTopSkip}{3.4mm}
-\renewcommand{\acvSectionContentTopSkip}{2.0mm}
+\renewcommand{\acvSectionContentTopSkip}{1.2mm}
 
 %-------------------------------------------------------------------------------
-% ENTRIES (experience, education)
-%
-% Rendered as boxes rather than tables, so an entry is atomic: its date, role,
-% organization and bullets can never be split across a page break.
+% ENTRIES (experience, education, projects)
 %-------------------------------------------------------------------------------
-\renewenvironment{cventries}{\par\addvspace{\acvSectionContentTopSkip}}{\par}
+\renewenvironment{cventries}{%
+  \par\addvspace{\acvSectionContentTopSkip}%
+  \begin{cvbody}%
+}{%
+  \end{cvbody}%
+}
 
 \renewcommand*{\cventry}[5]{%
   \needspace{3\baselineskip}%
-  \par\addvspace{1.5mm}%
-  \cvrailline{\cvrailwidth}{%
-    \entrydatestyle{#4}%
-  }{%
-    \entrytitlestyle{#1}\par\vspace{0.5mm}%
-    \notblank{#2}{\entrypositionstyle{#2}}{}%
-    \notblank{#3}{\entrylocationstyle{\,\textperiodcentered\nobreak\, #3}}{}%
-    \notblank{#2#3}{\par}{}%
-    \vspace{0.6mm}#5%
-  }%
+  \par\addvspace{1.6mm}%
+  \noindent\cvrail{\entrydatestyle{#4}}%
+  \entrytitlestyle{#1}\par\vspace{0.5mm}%
+  \notblank{#2}{\entrypositionstyle{#2}}{}%
+  \notblank{#3}{\entrylocationstyle{\,\textperiodcentered\nobreak\, #3}}{}%
+  \notblank{#2#3}{\par}{}%
+  \notblank{#5}{\vspace{0.6mm}#5}{}%
 }
 
 % Bullets inside an entry, indented just enough to read as subordinate.
@@ -201,22 +258,18 @@
 }
 
 %-------------------------------------------------------------------------------
-% LABELLED LISTS (skills, highlights, projects)
+% LABELLED LISTS (skills, highlights)
 %
 % The stock cvskills is a tabular* whose value column is pinned to
 % 0.9\textwidth regardless of label width, so any long label pushes the value
-% column off the right margin. Built on the rail primitive instead, the two
-% columns always sum to the measure, and rows break across pages freely.
-%
-% Takes an optional rail width, for sections whose labels need more room.
+% column off the right margin. On the rail, the two columns always sum to the
+% measure and a long row breaks across a page like any other paragraph.
 %-------------------------------------------------------------------------------
-\newlength{\cvskilllabelwidth}
-
-\renewenvironment{cvskills}[1][\cvrailwidth]{%
-  \setlength{\cvskilllabelwidth}{#1}%
+\renewenvironment{cvskills}{%
   \par\addvspace{\acvSectionContentTopSkip}%
+  \begin{cvbody}%
 }{%
-  \par
+  \end{cvbody}%
 }
 
 % The label column here holds words, not dates. "Radar \& RF" against "Signal
@@ -224,11 +277,13 @@
 % these labels go flush left, on the same axis as the section headings above.
 \renewcommand*{\cvskill}[2]{%
   \needspace{2\baselineskip}%
+  \par\addvspace{1.7mm}%
+  \noindent
   \begingroup
-  \renewcommand{\cvrailalign}{\raggedright}%
-  \cvrailline{\cvskilllabelwidth}{\skilltypestyle{#1}}{\skillsetstyle{#2}}%
+    \renewcommand{\cvrailalign}{\raggedright}%
+    \cvrail{\skilltypestyle{#1}}%
   \endgroup
-  \addvspace{0.9mm}%
+  \skillsetstyle{#2}\par
 }
 
 %-------------------------------------------------------------------------------
@@ -239,32 +294,84 @@
 %-------------------------------------------------------------------------------
 \renewenvironment{cvhonors}{%
   \par\addvspace{\acvSectionContentTopSkip}%
+  \begin{cvbody}%
 }{%
-  \par
+  \end{cvbody}%
 }
 
 \renewcommand*{\cvhonor}[4]{%
   \needspace{2\baselineskip}%
-  \cvrailline{\cvrailwidth}{\honordatestyle{#4}}{%
-    \honorpositionstyle{#1}%
-    \notblank{#2}{\honortitlestyle{, #2}}{}%
-    \notblank{#3}{\honorlocationstyle{\,\textperiodcentered\nobreak\, #3}}{}%
-  }%
-  \addvspace{0.35mm}%
+  \par\addvspace{1.0mm}%
+  \noindent\cvrail{\honordatestyle{#4}}%
+  \honorpositionstyle{#1}%
+  \notblank{#2}{\honortitlestyle{, #2}}{}%
+  \notblank{#3}{\honorlocationstyle{\,\textperiodcentered\nobreak\, #3}}{}%
+  \par
 }
 
 %-------------------------------------------------------------------------------
 % PARAGRAPHS
 %
-% Indented to the content column so running text lines up with everything else.
+% Indented to the content column so running text lines up with everything else,
+% and set ragged right like every other block. Justifying a 13 cm measure of
+% sans-serif full of "mm-wave" and "IEEE Trans." opens rivers between the words;
+% the ragged edge is the quieter of the two flaws, and it matches the bullets.
 %-------------------------------------------------------------------------------
 \renewenvironment{cvparagraph}{%
   \par\addvspace{\acvSectionContentTopSkip}%
-  \begin{adjustwidth}{\cvrailwidth+\cvrailgap}{0pt}%
+  \begin{cvbody}%
+  \setlength{\parskip}{1.6mm}%
   \paragraphstyle
 }{%
   \par
-  \end{adjustwidth}%
+  \end{cvbody}%
+  \addvspace{1.2mm}%
+}
+
+%-------------------------------------------------------------------------------
+% BULLETED RUNS (editorial roles, committees)
+%
+% Short enumerations that read as a list, not as a paragraph: one item per line,
+% with continuation lines hanging under the text rather than under the bullet.
+%-------------------------------------------------------------------------------
+\newenvironment{cvbullets}{%
+  \par\addvspace{\acvSectionContentTopSkip}%
+  \begin{cvbody}%
+  \paragraphstyle
+  \begin{itemize}[leftmargin=0.95em, labelwidth=0.55em, labelsep=0.4em,
+                  topsep=0pt, partopsep=0pt, parsep=0pt, itemsep=0.7mm,
+                  align=left]
+    \renewcommand{\labelitemi}{\textcolor{awesome}{\raisebox{0.12ex}{\tiny$\bullet$}}}%
+}{%
+  \end{itemize}%
+  \end{cvbody}%
+  \addvspace{1.2mm}%
+}
+
+%-------------------------------------------------------------------------------
+% MULTI-COLUMN LISTS
+%
+% For long enumerations of short items -- the CV's journal-reviewer list, which
+% at one item per full-measure line ate an entire page. Real columns, so they
+% break across pages properly. Optional argument is the column count.
+%-------------------------------------------------------------------------------
+\setlength{\columnsep}{0.6cm}
+
+\newenvironment{cvlist}[1][3]{%
+  \par\addvspace{\acvSectionContentTopSkip}%
+  \begin{cvbody}%
+  \fontsize{8.6pt}{1.15em}\bodyfontlight\color{text}%
+  \begin{multicols}{#1}%
+  \raggedcolumns\raggedright
+  \setlength{\parskip}{0pt}%
+  \begin{itemize}[leftmargin=0.8em, labelwidth=0.5em, labelsep=0.3em,
+                  topsep=0pt, partopsep=0pt, parsep=0pt, itemsep=0.35mm,
+                  align=left]
+    \renewcommand{\labelitemi}{\textcolor{awesome}{\raisebox{0.1ex}{\tiny$\bullet$}}}%
+}{%
+  \end{itemize}%
+  \end{multicols}%
+  \end{cvbody}%
   \addvspace{1.2mm}%
 }
 
@@ -279,11 +386,52 @@
 \renewcommand{\acvHeaderAfterSocialSkip}{0mm}
 \renewcommand{\acvHeaderSocialSep}{\hspace*{0.7em}\textcolor{sectiondivider}{\textbar}\hspace*{0.7em}}
 
+% \hfuzz is scoped to the header, and the \par has to be inside the group with
+% it: TeX reads \hfuzz when it breaks the paragraph, not when the boxes are
+% placed, so ending the paragraph outside the group would restore the old value
+% first and the tolerance would do nothing.
+%
+% The reason any is needed: \makecvheader sets a
+% zero-width photo minipage beside a \textwidth text minipage, with a source
+% newline between them contributing an inter-box space. The line is therefore
+% 1.7pt over the measure -- at the very end of it, so nothing is visible -- and
+% reports an overfull box on every build. Tolerating it here keeps the class
+% unmodified and keeps the overfull-box count in the CI summary meaningful
+% instead of permanently stuck at one.
 \newcommand{\makecvbanner}{%
-  \makecvheader[L]%
+  \begingroup
+    \hfuzz=2pt\relax
+    \makecvheader[L]%
+    \par
+  \endgroup
   \vspace{2.2mm}%
   \noindent\textcolor{awesome}{\rule{\textwidth}{1.0pt}}%
 }
+
+%-------------------------------------------------------------------------------
+% PDF METADATA
+%
+% The class ships \hypersetup with every field blank, which leaves the reader's
+% window title showing the filename and gives a recruiter's document system
+% nothing to index. Called from the drivers, after \name and \position.
+%
+% The subject is passed in rather than taken from \@position: the position line
+% carries \enskip and \cdotp for the on-page setting, and hyperref cannot turn
+% those into a PDF string -- it warns and writes something mangled.
+%
+%   \makecvmetadata{<document kind>}{<subject>}{<keywords>}
+%-------------------------------------------------------------------------------
+\makeatletter
+\newcommand{\makecvmetadata}[3]{%
+  \hypersetup{%
+    pdftitle={\@firstname\space\@lastname\space--\space#1},
+    pdfauthor={\@firstname\space\@lastname},
+    pdfsubject={#2},
+    pdfkeywords={#3},
+    pdfdisplaydoctitle=true,
+  }%
+}
+\makeatother
 
 %-------------------------------------------------------------------------------
 % BIBLIOGRAPHY
@@ -297,32 +445,30 @@
 %-------------------------------------------------------------------------------
 % HELPERS
 %-------------------------------------------------------------------------------
-% Tighten the gap after an entry that carries no description bullets.
-\newcommand{\cvnodescgap}{}
+% A count trailing the thing it counts, quiet enough to read as metadata.
+% Set beside the name rather than flushed right: at this measure the long
+% journal names wrap, and a flush-right figure then strands itself on a line of
+% its own under the name it belongs to.
+\newcommand{\cvcount}[1]{{\color{graytext}(#1)}}
 
 % An accent-colored hyperlink, for the few places a URL is worth showing.
 \newcommand{\cvurl}[2]{\href{#1}{\textcolor{awesome}{#2}}}
 
-%-------------------------------------------------------------------------------
-% MULTI-COLUMN LISTS
-%
-% For long enumerations of short items (the CV's journal-reviewer list), on the
-% content axis like every other block. Real columns, so they break across pages
-% properly. Optional argument is the column count; 2 by default.
-%
-%   \begin{cvlist}      \textbullet~Item\par  ...  \end{cvlist}
-%   \begin{cvlist}[3]   ...                        \end{cvlist}
-%-------------------------------------------------------------------------------
-\setlength{\columnsep}{0.7cm}
+% A quiet aside on the content axis -- a pointer that belongs to the section it
+% sits in, not a break in it.
+\newcommand{\cvnote}[1]{%
+  \par\addvspace{1.0mm}%
+  \begin{cvbody}%
+    {\fontsize{9pt}{1.3em}\bodyfontlight\color{graytext} #1}\par
+  \end{cvbody}%
+  \addvspace{0.6mm}%
+}
 
-\newenvironment{cvlist}[1][2]{%
-  \par\addvspace{\acvSectionContentTopSkip}%
-  \begin{adjustwidth}{\cvrailwidth+\cvrailgap}{0pt}%
-  \paragraphstyle
-  \begin{multicols}{#1}%
-  \raggedcolumns\raggedright
-}{%
-  \end{multicols}%
-  \end{adjustwidth}%
-  \addvspace{1.2mm}%
+% A quiet closing note, set apart from the section above it.
+\newcommand{\cvendnote}[1]{%
+  \par\addvspace{2.6mm}%
+  \noindent\textcolor{sectiondivider}{\rule{\textwidth}{0.6pt}}%
+  \par\addvspace{1.2mm}%
+  \noindent{\fontsize{8.6pt}{1.3em}\bodyfontlight\color{lighttext} #1}%
+  \par
 }

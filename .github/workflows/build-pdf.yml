@@ -64,6 +64,54 @@ jobs:
           done
           exit $status
 
+      # The publication counts quoted in the prose (cv/facts.tex) and the
+      # publications actually listed (the \nocite keys in cv/publications.tex)
+      # are two different things that must agree. Nothing in LaTeX ties them
+      # together, and a stale count is the kind of error that survives for years
+      # because it never looks wrong. Tie them together here.
+      - name: Check publication counts against the bibliography
+        working-directory: ./LaTeX
+        run: |
+          python3 - <<'PY'
+          import re, sys
+
+          facts = open('cv/facts.tex').read()
+          pubs = open('cv/publications.tex').read()
+
+          def stated(macro):
+              m = re.search(r'\\newcommand\{\\' + macro + r'\}\{(\d+)\}', facts)
+              if not m:
+                  sys.exit(f'cv/facts.tex does not define {macro}')
+              return int(m.group(1))
+
+          def listed(heading):
+              # The \nocite in the refsection under the given \cvsubsection.
+              m = re.search(re.escape('\\cvsubsection{' + heading + '}')
+                            + r'.*?\\nocite\{([^}]*)\}', pubs, re.S)
+              if not m:
+                  sys.exit(f'cv/publications.tex has no \\nocite under "{heading}"')
+              return len([k for k in m.group(1).split(',') if k.strip()])
+
+          checks = [
+              ('cvBooks',      'Book',                   'edited books'),
+              ('cvChapters',   'Book Chapters',          'book chapters'),
+              ('cvJournals',   'Journal Articles',       'journal articles'),
+              ('cvConfPapers', 'Conference Proceedings', 'conference papers'),
+              ('cvPatents',    'Patents',                'granted patents'),
+          ]
+
+          bad = False
+          for macro, heading, label in checks:
+              want, have = stated(macro), listed(heading)
+              if want != have:
+                  print(f'::error file=LaTeX/cv/facts.tex::{macro} says {want} '
+                        f'{label}, but cv/publications.tex lists {have}')
+                  bad = True
+              else:
+                  print(f'ok: {label} = {want}')
+          sys.exit(1 if bad else 0)
+          PY
+
       - name: Collect PDFs
         run: |
           mkdir -p pages
