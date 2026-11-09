@@ -4,8 +4,13 @@
 % Resume -- the condensed version.
 % Shares its design with zpeng_cv.tex via zpeng_style.tex, its numbers via
 % cv/facts.tex, and its bibliography via the same four .bib files. Content that
-% differs from the CV lives in resume-only files (summary_resume, highlights,
-% selected); everything else is shared under cv/.
+% differs from the CV lives in resume-only files (summary_resume,
+% experience_resume, highlights, skills_resume, selected); education is the
+% only section still shared under cv/.
+%
+% This document is deliberately understated relative to the CV: plain
+% statements of the work, no superlatives, no citation metrics or awards. The
+% CV at zpeng.me is where the full, unhedged record lives.
 
 \documentclass[11pt, letterpaper]{awesome-cv}
 
@@ -19,12 +24,12 @@
 %-------------------------------------------------------------------------------
 %	PERSONAL INFORMATION
 %
-% Google Scholar is deliberately omitted here: Selected Highlights already links
-% the full publication list, and six header links crowd out the three anyone
-% actually clicks. The CV keeps it.
+% Google Scholar is deliberately omitted here: the Publications row already
+% links the full publication list, and six header links crowd out the three
+% anyone actually clicks. The CV keeps it.
 %-------------------------------------------------------------------------------
 \name{Zhengyu}{Peng}
-\position{Senior Radar Systems Engineer{\enskip\cdotp\enskip}Ph.D.}
+\position{Radar Systems Engineer{\enskip\cdotp\enskip}Ph.D.}
 \address{Westfield, IN, USA}
 
 \mobile{(+1) 806-392-6110}
@@ -35,7 +40,7 @@
 
 \makecvmetadata
     {R\'esum\'e}
-    {Senior Radar Systems Engineer, Ph.D.}
+    {Radar Systems Engineer, Ph.D.}
     {radar systems engineering, automotive radar, 4D imaging radar, MIMO radar,
      FMCW radar, mm-wave, beamforming, antenna arrays, radar signal processing,
      interference mitigation, interior sensing radar}
@@ -53,18 +58,19 @@
 %-------------------------------------------------------------------------------
 %	CONTENT
 %
-% Experience is Aptiv + MERL; the editorial appointments are one line in the
-% Service row of highlights.tex. Highlights leads with Open Source. Selected
-% Publications & Patents closes the document with the work itself.
+% Experience is Aptiv + MERL in the resume's plainer phrasing
+% (experience_resume); the editorial appointments are one line in the Service
+% row of highlights.tex. Selected Publications & Patents closes the document
+% with a short sample of the work.
 %-------------------------------------------------------------------------------
 \input{cv/summary_resume.tex}
-\input{cv/experience.tex}
+\input{cv/experience_resume.tex}
 \input{cv/highlights.tex}
-\input{cv/skills.tex}
+\input{cv/skills_resume.tex}
 \input{cv/education.tex}
 \input{cv/selected.tex}
 
-\cvendnote{Complete record---all \cvJournals{} journal articles, \cvConfPapers{} conference papers, \cvPatents{} patents, projects and service---in the CV at \cvurl{https://zpeng.me}{zpeng.me}.}
+\cvendnote{Full publication list, patents, projects and service are in the CV at \cvurl{https://zpeng.me}{zpeng.me}.}
 
 %-------------------------------------------------------------------------------
 \end{document}
