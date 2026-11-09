@@ -11,12 +11,12 @@
 % zpeng_cjk.tex adds xeCJK and must come after zpeng_style.tex -- see the
 % comment at the top of that file. The CV does not input it.
 %
-% Three things are deliberately absent from this document, and should stay
+% Four things are deliberately absent from this document, and should stay
 % absent: 4D imaging radar (the product line is described generically),
-% RadarSimX and the other open-source tools, and every personal link
-% (homepage, GitHub, LinkedIn, Google Scholar). The CV at zpeng.me carries all
-% of it, and this file is the one place where it would be easy to put one of
-% them back without noticing.
+% RadarSimX and the other open-source tools, the editorial appointments and
+% peer-review record, and every personal link (homepage, GitHub, LinkedIn,
+% Google Scholar). The CV at zpeng.me carries all of it, and this file is the
+% one place where it would be easy to put one of them back without noticing.
 %
 % It is also understated relative to the CV: plain statements of the work, no
 % superlatives, no citation metrics, no awards.
@@ -37,11 +37,11 @@
 % Phone, email and city only. The homepage, GitHub, LinkedIn and Google Scholar
 % links the CV carries are all omitted here by request.
 %
-% The name is left in Latin script: the Chinese characters for it are not
-% recorded anywhere in this repository, and guessing at them would be worse
-% than leaving the romanization a reader can match to the email address.
+% The name is 彭政谕. \name takes {<firstname>}{<lastname>} and prints them in
+% that order, so the surname occupies the first slot; zpeng_cjk.tex swaps the
+% two name styles to match and drops the space the class puts between them.
 %-------------------------------------------------------------------------------
-\name{Zhengyu}{Peng}
+\name{彭}{政谕}
 \position{雷达系统工程师{\enskip\cdotp\enskip}工学博士}
 \address{美国印第安纳州韦斯特菲尔德}
 
@@ -56,6 +56,14 @@
      automotive radar, MIMO radar, FMCW radar, mm-wave, beamforming,
      antenna arrays, radar signal processing, interference mitigation}
 
+% \makecvmetadata builds the author and title from \@firstname\space\@lastname,
+% which is right for the CV's romanized name and wrong here -- it would write
+% "彭 政谕" into the PDF properties. Set after it, so these win.
+\hypersetup{%
+    pdftitle={彭政谕 -- 简历},
+    pdfauthor={彭政谕},
+}
+
 %-------------------------------------------------------------------------------
 \begin{document}
 
@@ -63,7 +71,7 @@
 
 \makecvfooter
     {\today}
-    {Zhengyu~Peng{\enskip\cdotp\enskip}简历}
+    {彭政谕{\enskip\cdotp\enskip}简历}
     {\thepage/\pageref{LastPage}}
 
 %-------------------------------------------------------------------------------
@@ -82,7 +90,7 @@
 \input{cv/projects_resume.tex}
 \input{cv/selected.tex}
 
-\cvendnote{完整的论文、专利、项目与学术服务记录见完整版英文简历（CV）。}
+\cvendnote{完整的论文、专利与项目记录见完整版英文简历（CV）。}
 
 %-------------------------------------------------------------------------------
 \end{document}

@@ -43,3 +43,23 @@
 % low. What is left is the spacing around the Latin runs embedded in Chinese
 % sentences; xeCJK's default glue is a touch wide at this size.
 \xeCJKsetup{xCJKecglue={\hskip 0.12em plus 0.04em minus 0.04em}}
+
+%-------------------------------------------------------------------------------
+% THE NAME
+%
+% The header is 彭政谕: surname first, no space between the two parts. Both of
+% those differ from the romanized form the CV sets, which is why they are
+% handled here rather than in zpeng_style.tex.
+%
+% \name takes {<firstname>}{<lastname>} and the class prints them in that
+% order, so the surname goes in the first slot -- and the two styles are
+% swapped below to keep the surname carrying the deep accent and the weight,
+% as it does on the CV. Without the swap, 彭 would be set in the light gray
+% reserved for the given name.
+%
+% The class joins the two with \acvHeaderNameDelim, which is \space. A Chinese
+% name takes no separator at all.
+%-------------------------------------------------------------------------------
+\renewcommand{\acvHeaderNameDelim}{}
+\renewcommand*{\headerfirstnamestyle}[1]{{\fontsize{28pt}{1em}\headerfont\bfseries\color{accentdeep} #1}}
+\renewcommand*{\headerlastnamestyle}[1]{{\fontsize{28pt}{1em}\headerfontlight\color{graytext} #1}}
