@@ -44,6 +44,20 @@ jobs:
           root_file: zpeng_resume.tex
           latexmk_use_xelatex: true
           working_directory: ./LaTeX
+          # The résumé is set in Chinese. xeCJK fails the build loudly when it is
+          # missing, but the CJK font does not: zpeng_cjk.tex picks the first
+          # face that exists, and with none of them present xeCJK substitutes
+          # and would publish a PDF of blank boxes. Fandol is the branch this
+          # image is expected to take, so require it here.
+          pre_compile: |
+            kpsewhich xeCJK.sty > /dev/null || {
+              echo "::error::xeCJK.sty is missing from this TeX Live image; the Chinese résumé cannot be typeset."
+              exit 1
+            }
+            kpsewhich FandolHei-Regular.otf > /dev/null || {
+              echo "::error::FandolHei-Regular.otf is missing from this TeX Live image. The résumé's CJK font cascade has no fallback left and would set Chinese text in substituted glyphs."
+              exit 1
+            }
 
       # A mistyped \nocite key drops a publication from the CV without failing
       # the build, so an unresolved citation has to be treated as an error.

@@ -1,17 +1,23 @@
 % Resume only. The CV prints the full record from the same .bib files
 % (cv/publications.tex).
 %
-% A short sample rather than a showcase: the edited book, one MIMO radar paper
-% and one patent, cited from the same .bib entries the CV prints so the two
-% documents can never disagree about a title, a venue or a patent number. The
-% earlier seven-item list filled the second page; with the rest of the resume
-% trimmed, check the page count after adding to this.
+% Citing the same .bib entries the CV prints means the two documents can never
+% disagree about a title, a venue or a patent number.
+%
+% Selection: the edited book, four journal articles, and the three patents named
+% in the Experience bullets. Eight items, which is what fills the second page
+% without spilling onto a third now that 4D imaging radar and the open-source
+% section are gone -- this list is the page-count lever for this document, so
+% add or remove here first and check the PDF.
+%
+% The entries stay in English. These are the published titles; translating them
+% would make the papers harder, not easier, to look up.
 
-\cvsection{Selected Publications \& Patents}
+\cvsection{代表性论文与专利}
 
 \begin{refsection}
     \nocite{Radar2022}
-    \nocite{TMTT2018MIMO}
-    \nocite{SLOWTIME2024}
+    \nocite{TMTT2018MIMO, Sensors2019, TMTT2017review, TIM2018}
+    \nocite{SLOWTIME2024, FREQUENCY2022, OBJECT2021}
     {\color{text}\printbibliography[heading=none]}
 \end{refsection}

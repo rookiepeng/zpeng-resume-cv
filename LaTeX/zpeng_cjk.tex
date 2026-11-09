@@ -1,0 +1,45 @@
+%-------------------------------------------------------------------------------
+% CJK SUPPORT -- RESUME ONLY
+%
+% zpeng_resume.tex is set in Chinese; zpeng_cv.tex is in English and does not
+% input this file, which is why this is not part of zpeng_style.tex.
+%
+% Loaded after zpeng_style.tex on purpose. The style file is what picks the
+% Latin faces (IBM Plex Sans), and xeCJK only takes over the CJK ranges -- so
+% by loading it second, Chinese text gets a CJK face while every Latin run in
+% the document (IEEE journal names, "FMCW", "MIMO", the bibliography) stays in
+% Plex and keeps the design intact.
+%
+% Both \setCJKmainfont and \setCJKsansfont are set, and to the same face. The
+% whole design runs on \sffamily (see the \bodyfont redefinitions in
+% zpeng_style.tex), so leaving the CJK sans family unset would send every
+% paragraph to xeCJK's fallback and warn once per font switch.
+%-------------------------------------------------------------------------------
+\usepackage{xeCJK}
+
+% Font cascade, most specific first. Only Fandol is guaranteed -- it ships with
+% TeX Live, so it is what the CI build uses; a local build with Noto or YaHei
+% installed will use that instead. The choice changes the typeface, not the
+% layout, so the page count holds either way.
+%
+% Fandol has no bold cut, hence AutoFakeBold on that branch alone: section
+% headings and entry titles are \bfseries, and without it they would render
+% identically to body text.
+\IfFontExistsTF{Noto Sans CJK SC}{%
+    \setCJKmainfont{Noto Sans CJK SC}%
+    \setCJKsansfont{Noto Sans CJK SC}%
+}{%
+    \IfFontExistsTF{Microsoft YaHei}{%
+        \setCJKmainfont{Microsoft YaHei}%
+        \setCJKsansfont{Microsoft YaHei}%
+    }{%
+        \setCJKmainfont[AutoFakeBold=2.2]{FandolHei-Regular.otf}%
+        \setCJKsansfont[AutoFakeBold=2.2]{FandolHei-Regular.otf}%
+    }%
+}
+
+% Chinese text is set ragged right throughout this document (cvbody), and a
+% CJK line may break almost anywhere, so the usual overfull-line pressure is
+% low. What is left is the spacing around the Latin runs embedded in Chinese
+% sentences; xeCJK's default glue is a touch wide at this size.
+\xeCJKsetup{xCJKecglue={\hskip 0.12em plus 0.04em minus 0.04em}}

@@ -1,20 +1,30 @@
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8 Unicode
 %
-% Resume -- the condensed version.
+% Resume -- the condensed, Chinese-language version.
 % Shares its design with zpeng_cv.tex via zpeng_style.tex, its numbers via
-% cv/facts.tex, and its bibliography via the same four .bib files. Content that
-% differs from the CV lives in resume-only files (summary_resume,
-% experience_resume, highlights, skills_resume, selected); education is the
-% only section still shared under cv/.
+% cv/facts.tex, and its bibliography via the same .bib files. Everything else
+% is resume-only and in Chinese (summary_resume, experience_resume,
+% highlights, skills_resume, education_resume, projects_resume, selected); no
+% section is shared with the English CV any more.
 %
-% This document is deliberately understated relative to the CV: plain
-% statements of the work, no superlatives, no citation metrics or awards. The
-% CV at zpeng.me is where the full, unhedged record lives.
+% zpeng_cjk.tex adds xeCJK and must come after zpeng_style.tex -- see the
+% comment at the top of that file. The CV does not input it.
+%
+% Three things are deliberately absent from this document, and should stay
+% absent: 4D imaging radar (the product line is described generically),
+% RadarSimX and the other open-source tools, and every personal link
+% (homepage, GitHub, LinkedIn, Google Scholar). The CV at zpeng.me carries all
+% of it, and this file is the one place where it would be easy to put one of
+% them back without noticing.
+%
+% It is also understated relative to the CV: plain statements of the work, no
+% superlatives, no citation metrics, no awards.
 
 \documentclass[11pt, letterpaper]{awesome-cv}
 
 \input{zpeng_style.tex}
+\input{zpeng_cjk.tex}
 \input{cv/facts.tex}
 
 \addbibresource{cv/books.bib}
@@ -24,26 +34,27 @@
 %-------------------------------------------------------------------------------
 %	PERSONAL INFORMATION
 %
-% Google Scholar is deliberately omitted here: the Publications row already
-% links the full publication list, and six header links crowd out the three
-% anyone actually clicks. The CV keeps it.
+% Phone, email and city only. The homepage, GitHub, LinkedIn and Google Scholar
+% links the CV carries are all omitted here by request.
+%
+% The name is left in Latin script: the Chinese characters for it are not
+% recorded anywhere in this repository, and guessing at them would be worse
+% than leaving the romanization a reader can match to the email address.
 %-------------------------------------------------------------------------------
 \name{Zhengyu}{Peng}
-\position{Radar Systems Engineer{\enskip\cdotp\enskip}Ph.D.}
-\address{Westfield, IN, USA}
+\position{雷达系统工程师{\enskip\cdotp\enskip}工学博士}
+\address{美国印第安纳州韦斯特菲尔德}
 
 \mobile{(+1) 806-392-6110}
 \email{zpeng.me@gmail.com}
-\homepage{zpeng.me}
-\github{rookiepeng}
-\linkedin{zhengyup}
 
 \makecvmetadata
-    {R\'esum\'e}
-    {Radar Systems Engineer, Ph.D.}
-    {radar systems engineering, automotive radar, 4D imaging radar, MIMO radar,
-     FMCW radar, mm-wave, beamforming, antenna arrays, radar signal processing,
-     interference mitigation, interior sensing radar}
+    {简历}
+    {雷达系统工程师，工学博士}
+    {雷达系统工程, 汽车雷达, MIMO 雷达, FMCW 雷达, 毫米波, 波束形成, 天线阵列,
+     雷达信号处理, 干扰抑制, 座舱内感知雷达, radar systems engineering,
+     automotive radar, MIMO radar, FMCW radar, mm-wave, beamforming,
+     antenna arrays, radar signal processing, interference mitigation}
 
 %-------------------------------------------------------------------------------
 \begin{document}
@@ -52,25 +63,26 @@
 
 \makecvfooter
     {\today}
-    {Zhengyu~Peng{\enskip\cdotp\enskip}R\'esum\'e}
+    {Zhengyu~Peng{\enskip\cdotp\enskip}简历}
     {\thepage/\pageref{LastPage}}
 
 %-------------------------------------------------------------------------------
 %	CONTENT
 %
-% Experience is Aptiv + MERL in the resume's plainer phrasing
-% (experience_resume); the editorial appointments are one line in the Service
-% row of highlights.tex. Selected Publications & Patents closes the document
-% with a short sample of the work.
+% Two pages is the target. Page one runs summary through skills; education,
+% projects and the selected bibliography fill page two. The lever for the page
+% count is the \nocite list in cv/selected.tex, then the project count in
+% cv/projects_resume.tex -- in that order.
 %-------------------------------------------------------------------------------
 \input{cv/summary_resume.tex}
 \input{cv/experience_resume.tex}
 \input{cv/highlights.tex}
 \input{cv/skills_resume.tex}
-\input{cv/education.tex}
+\input{cv/education_resume.tex}
+\input{cv/projects_resume.tex}
 \input{cv/selected.tex}
 
-\cvendnote{Full publication list, patents, projects and service are in the CV at \cvurl{https://zpeng.me}{zpeng.me}.}
+\cvendnote{完整的论文、专利、项目与学术服务记录见完整版英文简历（CV）。}
 
 %-------------------------------------------------------------------------------
 \end{document}
